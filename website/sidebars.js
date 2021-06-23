@@ -10,7 +10,7 @@ module.exports = {
     {
       type: "category",
       label: "Fill & Sign",
-      items: ["iso"],
+      items: ["add-fill-and-sign"],
     },
     {
       type: "category",
