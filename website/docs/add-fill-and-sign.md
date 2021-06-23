@@ -1,6 +1,5 @@
 ---
-title: Add Fill & Sign to a Static Website
-slug: /
+title: Add to a Static Website
 ---
 
 For each document you want to include, add a button element with the `data-filekey` attribute.
