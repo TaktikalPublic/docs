@@ -150,24 +150,24 @@ Once published, you will see the button turn green.
 
 You can learn more about our "Draft & Publish" feature here:
 
-[Draft & Publish](Draft%20&%20Publish%20cf1fa35618b7441d8f20d85fdefd001e.md)
+[Draft & Publish](draft-and-publish)
 
 We've published our Fill & Sign document, but we have yet to specify what should happen after the user has filled out and signed the document. You can learn how to configure the document's delivery here:
 
-[WIP: Document Delivery](WIP%20Document%20Delivery%2058032e28271340a097739f240cc16a14.md)
+[WIP: Document Delivery](wip-document-delivery)
 
 Once the document's delivery has been set up, you can move onto adding it to your company's website:
 
-[Adding Fill & Sign to a Website](https://www.notion.so/Adding-Fill-Sign-to-a-Website-31d297fcb9a347a38741c63157ae34bd)
+[Adding Fill & Sign to a Website](/docs/add-fill-and-sign)
 
 There are lots of shortcuts to make working with the Fill & Sign Editor easier. You can learn more about them here:
 
-[Keyboard Shortcuts](Keyboard%20Shortcuts%2067f5f4ce589846ed8c7988192ef95e9e.md)
+[Keyboard Shortcuts](/docs/fill-and-sign/editor/keyboard-shortcuts/symbol-table)
 
 If your document needs to be signed by multiple people, you can learn how to specify the number of signees here:
 
-[Multiple Signees](Multiple%20Signees%2035890f2c91c6407d811eec563baf4ca1.md)
+[Multiple Signees](multiple-signees)
 
 If you need to take your Fill & Sign document down, you can learn how to deactivate it here:
 
-[Deactivate a flow](Deactivate%20a%20flow%2083aa36f2e78a4065ad8109eece3ee737.md)
+[Deactivate a flow](deactivate-a-flow)
