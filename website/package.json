@@ -45,5 +45,8 @@
   },
   "nohoist": [
     "**/html-minifier-terser"
-  ]
+  ],
+  "resolutions": {
+    "terser": "4.8.0"
+  }
 }
