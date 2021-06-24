@@ -1,7 +1,5 @@
 module.exports = {
   docs: [
-    "create-a-document",
-    "markdown-features",
     {
       type: "category",
       label: "API",
