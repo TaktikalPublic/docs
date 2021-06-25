@@ -2,13 +2,13 @@
 module.exports = {
   title: "Taktikal",
   tagline: "Taktikal's Docs",
-  url: "https://pages.gitlab.io",
+  url: "https://taktikal.gitlab.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "taktikal", // Usually your GitHub org/user name.
-  projectName: "taktikal/docs", // Usually your repo name.
+  projectName: "docs", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "",
