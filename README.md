@@ -9,6 +9,40 @@ documentation https://docs.gitlab.com/ee/user/project/pages/.
 
 ---
 
+# Website
+
+This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+
+## Installation
+
+```console
+yarn install
+```
+
+## Local Development
+
+```console
+yarn start
+```
+
+This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+
+## Build
+
+```console
+yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+## Deployment
+
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
 ## GitLab CI/CD
 
 This project's static Pages are built by [GitLab CI/CD](https://about.gitlab.com/product/continuous-integration/),
@@ -24,22 +58,22 @@ stages:
 test:
   stage: test
   script:
-  - cd website
-  - yarn install
-  - yarn build
+    - cd website
+    - yarn install
+    - yarn build
   except:
     - master
 
 pages:
   stage: deploy
   script:
-  - cd website
-  - yarn install
-  - yarn build
-  - mv ./build ../public
+    - cd website
+    - yarn install
+    - yarn build
+    - mv ./build ../public
   artifacts:
     paths:
-    - public
+      - public
   only:
     - master
 ```
@@ -108,6 +142,6 @@ won't be necessary unless you want to contribute back to the GitLab upstream pro
 
 1. CSS is missing! That means two things:
 
-    Either that you have wrongly set up the CSS URL in your templates, or
-    your static generator has a configuration option that needs to be explicitly
-    set in order to serve static assets under a relative URL.
+   Either that you have wrongly set up the CSS URL in your templates, or
+   your static generator has a configuration option that needs to be explicitly
+   set in order to serve static assets under a relative URL.
