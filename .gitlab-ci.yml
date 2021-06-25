@@ -7,16 +7,16 @@ stages:
 test:
   stage: test
   script:
-    - yarn install
-    - yarn build
+    - npm install
+    - npm run build
   except:
     - master
 
 pages:
   stage: deploy
   script:
-    - yarn install
-    - yarn build
+    - npm install
+    - npm run build
     - mv ./build ../public
   artifacts:
     paths:
