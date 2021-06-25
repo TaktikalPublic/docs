@@ -8,10 +8,11 @@ services:
       - 35729:35729
     volumes:
       - ./docs:/app/docs
+      - ./blog:/app/blog
       - ./core:/app/core
       - ./i18n:/app/i18n
       - ./pages:/app/pages
       - ./static:/app/static
       - ./sidebars.json:/app/sidebars.json
-      - ./docusaurus.config.js:/app/docusaurus.config.js
+      - ./siteConfig.js:/app/siteConfig.js
     working_dir: /app
