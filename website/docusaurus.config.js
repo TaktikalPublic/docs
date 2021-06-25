@@ -3,7 +3,7 @@ module.exports = {
   title: "Taktikal",
   tagline: "Taktikal's Docs",
   url: "https://taktikal.gitlab.io",
-  baseUrl: "/",
+  baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -78,8 +78,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
+          editUrl: "https://gitlab.com/taktikal/docs/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
