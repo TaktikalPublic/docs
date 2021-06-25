@@ -7,21 +7,19 @@ stages:
 test:
   stage: test
   script:
-  - cd website
-  - yarn install
-  - yarn build
+    - yarn install
+    - yarn build
   except:
     - master
 
 pages:
   stage: deploy
   script:
-  - cd website
-  - yarn install
-  - yarn build
-  - mv ./build ../public
+    - yarn install
+    - yarn build
+    - mv ./build ../public
   artifacts:
     paths:
-    - public
+      - public
   only:
     - master
