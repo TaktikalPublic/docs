@@ -1,9 +1,9 @@
 FROM node:lts
 
-WORKDIR /app/
+WORKDIR /app
 
 EXPOSE 3000 35729
-COPY ./ /app/
+COPY . /app
 RUN npm install
 
 CMD npm start

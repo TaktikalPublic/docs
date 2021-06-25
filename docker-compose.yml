@@ -10,6 +10,6 @@ services:
       - ./docs:/app/docs
       - ./pages:/app/pages
       - ./static:/app/static
-      - ./sidebars.json:/app/sidebars.json
+      - ./sidebars.js:/app/sidebars.js
       - ./docusaurus.config.js:/app/docusaurus.config.js
     working_dir: /app
