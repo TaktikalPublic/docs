@@ -29,8 +29,13 @@ html {
 }
 
 html[data-theme="dark"] {
-  --ifm-color-primary: #4e89e8;
+  --ifm-color-primary: #fff;
   --ifm-color-primary-dark: #5a91ea; /* any other colors you wish to overwrite */
+  --ifm-heading-color: #fff;
+}
+
+p {
+  color: var(--ifm-color-primary);
 }
 
 .docusaurus-highlight-code-line {
