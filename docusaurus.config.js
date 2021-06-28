@@ -5,7 +5,7 @@ module.exports = {
   baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
   organizationName: 'taktikal',
   projectName: 'docs',
   themeConfig: {
@@ -13,8 +13,8 @@ module.exports = {
       title: '',
       logo: {
         alt: 'Logo',
-        src: 'img/logo-dark.svg',
-        srcDark: 'img/logo-light.svg',
+        src: 'logo-dark.svg',
+        srcDark: 'logo-light.svg',
       },
       items: [
         {
