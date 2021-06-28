@@ -5,6 +5,8 @@
  * work well for content-centric websites.
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2823fb;
@@ -15,6 +17,15 @@
   --ifm-color-primary-lighter: #514dfc;
   --ifm-color-primary-lightest: #7a77fd;
   --ifm-code-font-size: 95%;
+  --ifm-heading-color: #2823fb;
+  --ifm-button-color: #fff;
+  --ifm-button-background-color: #2823fb;
+  --ifm-font-color-base: #fff;
+  --ifm-navbar-link-color: #2823fb;
+}
+
+html {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 html[data-theme="dark"] {
@@ -27,4 +38,19 @@ html[data-theme="dark"] {
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.hero--primary {
+  --ifm-hero-background-color: white;
+  color: var(--ifm-color-primary);
+}
+
+.button {
+  transition: box-shadow 0.3s ease 0s, background-color 0.3s ease 0s,
+    transform 0.3s ease 0s;
+}
+
+.button:hover {
+  box-shadow: rgba(3, 0, 113, 0) 0px 0px 0px inset,
+    rgba(40, 35, 251, 0.3) 0px 10px 20px;
 }
