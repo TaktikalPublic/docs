@@ -4,14 +4,15 @@
 
 Example [Docusaurus](https://docusaurus.io/) website using GitLab Pages.
 
-Learn more about GitLab Pages at https://about.gitlab.com/features/pages and the official
-documentation https://docs.gitlab.com/ee/user/project/pages/.
+Learn more about GitLab Pages at https://about.gitlab.com/features/pages and the
+official documentation https://docs.gitlab.com/ee/user/project/pages/.
 
 ---
 
 # Website
 
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern
+static website generator.
 
 ## Installation
 
@@ -25,7 +26,8 @@ yarn install
 yarn start
 ```
 
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server and open up a browser window.
+Most changes are reflected live without having to restart the server.
 
 ## Build
 
@@ -33,7 +35,8 @@ This command starts a local development server and open up a browser window. Mos
 yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `build` directory and can be
+served using any static contents hosting service.
 
 ## Deployment
 
@@ -41,11 +44,13 @@ This command generates static content into the `build` directory and can be serv
 GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+If you are using GitHub pages for hosting, this command is a convenient way to
+build the website and push to the `gh-pages` branch.
 
 ## GitLab CI/CD
 
-This project's static Pages are built by [GitLab CI/CD](https://about.gitlab.com/product/continuous-integration/),
+This project's static Pages are built by
+[GitLab CI/CD](https://about.gitlab.com/product/continuous-integration/),
 following the steps defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
 ```yaml
@@ -114,12 +119,13 @@ Read more at the [Docusaurus documentation](https://docusaurus.io).
 If you have forked this project, in order to use it as your user/group website
 served on the root path, you will need to:
 
-1. Change the path of your project to `namespace.gitlab.io`, where `namespace` is
-   your `username` or `groupname`. This can be done by navigating to your
+1. Change the path of your project to `namespace.gitlab.io`, where `namespace`
+   is your `username` or `groupname`. This can be done by navigating to your
    project's **Settings > General** page under the Advanced section.
 1. Open `website/siteConfig.js` and change:
    1. The `url` to be `https://namespace.gitlab.io` or your
-      [custom domain](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/index.html) of choice.
+      [custom domain](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/index.html)
+      of choice.
    1. The `baseUrl` to be '/'.
 
 If you have forked this project, and want to use it under a subpath, you will
@@ -127,21 +133,24 @@ need to:
 
 1. Open `website/docusaurus.config.js` and change:
    1. The `url` to be `https://namespace.gitlab.io` or your
-      [custom domain](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/index.html) of choice.
+      [custom domain](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/index.html)
+      of choice.
    1. The `baseUrl` to be the same as the name of your project.
 
-Read more about the [types of GitLab Pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html).
+Read more about the
+[types of GitLab Pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html).
 
 ## Did you fork this project?
 
 If you forked this project for your own use, please go to your project's
 **Settings > General > Advanced** and remove the forking relationship, which
-won't be necessary unless you want to contribute back to the GitLab upstream project.
+won't be necessary unless you want to contribute back to the GitLab upstream
+project.
 
 ## Troubleshooting
 
 1. CSS is missing! That means two things:
 
-   Either that you have wrongly set up the CSS URL in your templates, or
-   your static generator has a configuration option that needs to be explicitly
-   set in order to serve static assets under a relative URL.
+   Either that you have wrongly set up the CSS URL in your templates, or your
+   static generator has a configuration option that needs to be explicitly set
+   in order to serve static assets under a relative URL.

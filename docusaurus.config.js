@@ -1,47 +1,41 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "Taktikal",
-  tagline: "Taktikal's Docs",
-  url: "https://taktikal.gitlab.io",
-  baseUrl: "/docs/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "taktikal",
-  projectName: "docs",
+  title: 'Docs',
+  url: 'https://taktikal.gitlab.io',
+  baseUrl: '/docs/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+  organizationName: 'taktikal',
+  projectName: 'docs',
   themeConfig: {
     navbar: {
-      title: "",
+      title: '',
       logo: {
-        alt: "Logo",
-        src: "img/logo-light.svg",
-        srcDark: "img/logo-dark.svg",
+        alt: 'Logo',
+        src: 'img/logo-dark.svg',
+        srcDark: 'img/logo-light.svg',
       },
       items: [
         {
-          to: "docs/",
-          activeBasePath: "docs",
-          label: "Docs",
-          position: "left",
-        },
-        {
-          href: "https://gitlab.com/taktikal/docs",
-          label: "GitLab",
-          position: "right",
+          href: 'https://gitlab.com/taktikal/docs',
+          label: 'GitLab',
+          position: 'right',
         },
       ],
     },
   },
   presets: [
     [
-      "@docusaurus/preset-classic",
+      '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://gitlab.com/taktikal/docs/-/edit/master",
+          sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/',
+          editUrl: 'https://gitlab.com/taktikal/docs/-/edit/master',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
