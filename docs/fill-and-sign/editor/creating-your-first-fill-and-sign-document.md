@@ -158,11 +158,11 @@ We've published our Fill & Sign document, but we have yet to specify what should
 
 Once the document's delivery has been set up, you can move onto adding it to your company's website:
 
-[Adding Fill & Sign to a Website](/docs/docs/add-fill-and-sign)
+[Adding Fill & Sign to a Website](/docs/add-fill-and-sign)
 
 There are lots of shortcuts to make working with the Fill & Sign Editor easier. You can learn more about them here:
 
-[Keyboard Shortcuts](/docs/docs/fill-and-sign/editor/keyboard-shortcuts/symbol-table)
+[Keyboard Shortcuts](/docs/fill-and-sign/editor/keyboard-shortcuts/symbol-table)
 
 If your document needs to be signed by multiple people, you can learn how to specify the number of signees here:
 
