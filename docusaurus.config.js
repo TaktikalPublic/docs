@@ -3,7 +3,7 @@ module.exports = {
   title: "Taktikal",
   tagline: "Taktikal's Docs",
   url: "https://taktikal.gitlab.io",
-  baseUrl: "/docs/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -14,7 +14,8 @@ module.exports = {
       title: "",
       logo: {
         alt: "Logo",
-        src: "img/logo.svg",
+        src: "img/logo-light.svg",
+        srcDark: "img/logo-dark.svg",
       },
       items: [
         {
@@ -24,7 +25,7 @@ module.exports = {
           position: "left",
         },
         {
-          href: "https://gitlab.com/pages/docusaurus",
+          href: "https://gitlab.com/taktikal/docs",
           label: "GitLab",
           position: "right",
         },
@@ -69,7 +70,11 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Taktikal. Built with Docusaurus.`,
+    },
+    colorMode: {
+      disableSwitch: false,
+      switchConfig: {},
     },
   },
   presets: [
@@ -78,7 +83,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://gitlab.com/taktikal/docs/",
+          editUrl: "https://gitlab.com/taktikal/docs/-/edit/master",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
