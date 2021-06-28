@@ -5,7 +5,7 @@
  * work well for content-centric websites.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
@@ -20,22 +20,22 @@
   --ifm-heading-color: #2823fb;
   --ifm-button-color: #fff;
   --ifm-button-background-color: #2823fb;
-  --ifm-font-color-base: #fff;
-  --ifm-navbar-link-color: #2823fb;
 }
 
 html {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-html[data-theme="dark"] {
-  --ifm-color-primary: #fff;
-  --ifm-color-primary-dark: #5a91ea; /* any other colors you wish to overwrite */
-  --ifm-heading-color: #fff;
+html[data-theme='dark'] {
+  --ifm-color-primary: #12e8a8;
+  --ifm-color-primary-dark: #5a91ea;
+  --ifm-heading-color: #12e8a8;
+  --ifm-navbar-link-color: #fff;
+  --ifm-navbar-link-hover-color: #12e8a8;
 }
 
-p {
-  color: var(--ifm-color-primary);
+html[data-theme='dark'] .navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
 .docusaurus-highlight-code-line {
@@ -43,19 +43,4 @@ p {
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
-}
-
-.hero--primary {
-  --ifm-hero-background-color: white;
-  color: var(--ifm-color-primary);
-}
-
-.button {
-  transition: box-shadow 0.3s ease 0s, background-color 0.3s ease 0s,
-    transform 0.3s ease 0s;
-}
-
-.button:hover {
-  box-shadow: rgba(3, 0, 113, 0) 0px 0px 0px inset,
-    rgba(40, 35, 251, 0.3) 0px 10px 20px;
 }
