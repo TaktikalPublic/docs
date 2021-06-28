@@ -3,12 +3,12 @@ module.exports = {
   title: "Taktikal",
   tagline: "Taktikal's Docs",
   url: "https://taktikal.gitlab.io",
-  baseUrl: "/",
+  baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "taktikal", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
+  organizationName: "taktikal",
+  projectName: "docs",
   themeConfig: {
     navbar: {
       title: "",
@@ -30,51 +30,6 @@ module.exports = {
           position: "right",
         },
       ],
-    },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Getting Started",
-              to: "docs/",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Taktikal. Built with Docusaurus.`,
-    },
-    colorMode: {
-      disableSwitch: false,
-      switchConfig: {},
     },
   },
   presets: [
