@@ -205,5 +205,12 @@
   ["web-?page(s?)", "web page$1"],
   ["white[- ]space", "whitespace"],
   ["wild[- ]card(s?)", "wildcard$1"],
-  ["wi[- ]?fi", "Wi-Fi"]
+  ["wi[- ]?fi", "Wi-Fi"],
+  ["Fill & Sign", "F&S"],
+  ["Drop & Sign", "D&S"],
+  ["Smart Form(s?)"],
+  ["KYC", "Know Your Customer"],
+  ["AML", "Anti Money Laundering"],
+  ["PEP", "Politically Exposed Person"],
+  ["PEP & Sanctions"]
 ]
