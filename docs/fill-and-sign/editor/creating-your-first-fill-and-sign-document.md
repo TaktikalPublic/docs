@@ -1,5 +1,6 @@
 ---
 title: Creating your first Fill & Sign Document
+slug: /
 ---
 
 In this tutorial, we'll go through how you can use the Fill & Sign Editor to
