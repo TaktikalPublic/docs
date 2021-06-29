@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   docusaurus:
@@ -7,12 +7,8 @@ services:
       - 3000:3000
       - 35729:35729
     volumes:
-      - ./docs:/app/docs
-      - ./blog:/app/blog
-      - ./core:/app/core
-      - ./i18n:/app/i18n
       - ./pages:/app/pages
       - ./static:/app/static
-      - ./sidebars.json:/app/sidebars.json
-      - ./siteConfig.js:/app/siteConfig.js
+      - ./sidebars.js:/app/sidebars.js
+      - ./docusaurus.config.js:/app/docusaurus.config.js
     working_dir: /app

@@ -2,7 +2,7 @@
 module.exports = {
   title: 'Docs',
   url: 'https://taktikal.gitlab.io',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'favicon.ico',
