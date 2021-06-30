@@ -197,7 +197,7 @@ to configure the document's delivery here:
 Once the document's delivery has been set up, you can move onto adding it to
 your company's website:
 
-[Adding Fill & Sign to a Website](/add-fill-and-sign)
+[Adding Fill & Sign to a Website](/)
 
 There are lots of shortcuts to make working with the Fill & Sign Editor easier.
 You can learn more about them here:
