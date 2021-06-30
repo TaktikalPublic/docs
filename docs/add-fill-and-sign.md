@@ -1,5 +1,6 @@
 ---
 title: Add to a Static Website
+slug: /
 ---
 
 For each document you want to include, add a button element with the
