@@ -24,6 +24,10 @@ module.exports = {
         },
       ],
     },
+    algolia: {
+      apiKey: 'ce54ae98420beac5aa8e3ad58d7786ce', // Read access key
+      indexName: 'taktikal',
+    },
   },
   presets: [
     [
