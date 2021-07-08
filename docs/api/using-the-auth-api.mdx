@@ -1,0 +1,136 @@
+---
+title: 'Using the Auth API'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+A single `POST` request is needed to authenticate a user.
+
+The `/auth` request returns a `Customer` object but with different amount of
+information filled out depending on the `LookupType`. If
+`LookupType.NameAddressFamily` is selected then the extra values returned will
+be returned in `Meta`
+
+There are three different return types depending on the `LookupType`
+
+1. `Name`: Will only return the SSN and Name of the authenticated person. This
+   has no additional lookup cost.
+2. `NameAddress`: Will return Name, SSN and legal address information. This has
+   an additional lookup cost. This is the default value if no value is given for
+   `LookupType`.
+3. `NameAddressFamily`: Returns Name, SSN, Address data, gender code, and family
+   information. _Note: Family lookup requires special permission_.
+
+### Example request to authenticate a person
+
+```json
+## Request
+
+POST /api/Auth HTTP/1.1
+Host: onboardingdev.taktikal.is
+Accept: application/json
+Content-Type: application/json
+{
+  "PhoneNumber": "8433600",
+  "FlowKey": "54ab65385c5b",
+  "LookupType": "NameAddressFamily"
+}
+
+## Response
+{
+    "name": "Bjarki Heiðar Ingason",
+    "ssn": "0509815688",
+    "phoneNumber": "8433600",
+    "address": "Vattarási 5",
+    "postalCode": "210",
+    "city": "Garðabær",
+    "token": "f59b032ae37e44bc94f3",
+    "flowKey": "54ab65385c5b",
+    "meta": {
+        "ParnerSsn": "1231231245",
+        "FamilyNumber": "0509815688",
+        "GenderCode": "1",
+        "FamilyStatus": "3"
+    }
+}
+```
+
+### Examples code in different languages
+
+<Tabs 
+  defaultValue="php"
+  values={[
+    { label: 'PHP', value: 'php' },
+    { label: 'Node.js', value: 'nodejs' },
+    { label: 'C#', value: 'csharp' }
+  ]}
+>
+  <TabItem value="php">
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://onboardingdev.taktikal.is/api/Auth');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'Host' => 'onboardingdev.taktikal.is',
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+));
+
+$request->setBody('{
+  "PhoneNumber": "8433600",
+  "FlowKey": "54ab65385c5b",
+  "LookupType": "Name"
+}');
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+</TabItem>
+  <TabItem value="nodejs">
+
+```jsx
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://onboardingdev.taktikal.is/api/Auth',
+  headers:
+   { Content-Type: 'application/json',
+     Accept: 'application/json' },
+  body:
+   { PhoneNumber: '8433600',
+     FlowKey: '54ab65385c5b',
+     LookupType: 'Name' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+  </TabItem>
+    <TabItem value="csharp">
+
+```csharp
+var client = new RestClient("https://onboardingdev.taktikal.is/api/Auth");
+var request = new RestRequest(Method.POST);
+request.AddHeader("Content-Type", "application/json");
+request.AddHeader("Accept", "application/json");
+request.AddParameter("undefined", "{\r\n  \"PhoneNumber\": \"8433600\",\r\n  \"FlowKey\": \"54ab65385c5b\",\r\n  \"LookupType\": \"Name\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+  </TabItem>
+</Tabs>

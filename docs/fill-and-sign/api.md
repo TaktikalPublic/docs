@@ -1,87 +1,6 @@
 ---
-title: Add to a Static Website
-slug: /
+title: API
 ---
-
-For each document you want to include, add a button element with the
-`data-filekey` attribute.
-
-```html
-<button data-filekey="{{fileKey}}" class="btn">Fylla út skjal</button>
-```
-
-You should then add `/utils.js` to pages where the user should be able to open
-Fill & Sign documents.
-
-This script will do the following:
-
-1. Include the CSS for the modal that document are opened in.
-2. Add click listeners to each element with a `data-filekey` attribute with a
-   valid file key.
-3. Open the document when the elements are clicked.
-
-The script should be included after elements with the `data-filekey` attribute.
-
-```html
-<body>
-  <button data-filekey="{{fileKey}}">Open</button>
-
-  <script src="https://fill.dropandsign.is/utils.js"></script>
-</body>
-```
-
-## Fill & Sign Smart Forms
-
-If the Fill & Sign document has an associated Smart Form, you can add
-`data-has-smartform` to the same element and the Smart Form will be opened
-instead of the Fill & Sign document.
-
-```html
-<button data-filekey="{{fileKey}}" data-has-smartform>Open</button>
-```
-
-## Initial data
-
-It can be desirable to provide the initial data for some fields in a Fill & Sign
-documents. This initial data can be provided by adding `data-initialdata` to the
-element.
-
-```html
-<button data-filekey="{{fileKey}}" data-initialdata='{"name":"John Smith"}'>
-  Open
-</button>
-```
-
-You can see how the initial data should be provided to fields in the
-[`initialData`](#initialData) section.
-
-# Add Fill & Sign to a Dynamic Website (Single-Page Application)
-
-## Installation
-
-The Fill & Sign utilities live in our `@taktikal/fillandsign` package. You can
-install it via npm.
-
-```
-npm i -S @taktikal/fillandsign
-```
-
-## Getting started
-
-For documents to be opened in a modal you must include the modal CSS.
-
-If your build process supports CSS imports, you can include it like so:
-
-```tsx
-import '@taktikal/fillandsign/styles.css';
-```
-
-If not, you can find the `styles.css` files in your `node_modules` folder under
-`~/node_modules/@taktikal/fillandsign/styles.css`. You can then include the CSS
-file in your project in any way you see fit.
-
-If the CSS is not included, Fill & Sign will default to opening documents in a
-new tab.
 
 ## Exports
 
@@ -183,7 +102,7 @@ checkboxes with IDs `check_2`, `check_3`, `check_4` would not be checked.
 
 #### Radios
 
-Radios are comprised of multiple radio options where one or none of them is
+Radios are composed of multiple radio options where one or none of them are
 selected. Given a radio with IDs that look like so:
 
 ```

@@ -50,7 +50,7 @@ fields. Try pressing and unpressing `Shift ⇧` while moving a field to get a
 sense of how this works.
 
 The "ID num." field is now the selected field. We can add the "Name" field to
-the selection by holding `Shift ⇧` and just clicking it:
+the selection by holding `Shift ⇧` and clicking it:
 
 ![Creating your first Fill & Sign Document/Untitled 7.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-07.png)
 
@@ -202,7 +202,7 @@ your company's website:
 There are lots of shortcuts to make working with the Fill & Sign Editor easier.
 You can learn more about them here:
 
-[Keyboard Shortcuts](/fill-and-sign/editor/keyboard-shortcuts/symbol-table)
+[Keyboard Shortcuts](/docs/fill-and-sign/editor/keyboard-shortcuts/symbol-table)
 
 If your document needs to be signed by multiple people, you can learn how to
 specify the number of signees here:
