@@ -1,8 +1,8 @@
 {
-  "name": "docs",
+  "name": "taktikal-docs",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://taktikal.is",
+  "homepage": "https://docs.taktikal.is",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -16,9 +16,9 @@
     "lint": "./node_modules/.bin/textlint docs"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.72",
-    "@docusaurus/preset-classic": "2.0.0-alpha.72",
-    "@docusaurus/theme-search-algolia": "^2.0.0-beta.2",
+    "@docusaurus/core": "^2.0.0-beta.3",
+    "@docusaurus/preset-classic": "^2.0.0-beta.3",
+    "@docusaurus/theme-search-algolia": "^2.0.0-beta.3",
     "@mdx-js/react": "^1.6.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
@@ -36,8 +36,9 @@
     ]
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.1",
-    "@types/react": "^17.0.11",
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.3",
+    "@tsconfig/docusaurus": "^1.0.2",
+    "@types/react": "^17.0.13",
     "@types/react-helmet": "^6.1.1",
     "@types/react-router-dom": "^5.1.7",
     "prettier": "^2.3.1",
@@ -47,7 +48,8 @@
     "textlint-rule-en-capitalization": "^2.0.3",
     "textlint-rule-stop-words": "^2.0.9",
     "textlint-rule-terminology": "^2.1.5",
-    "textlint-rule-write-good": "^2.0.0"
+    "textlint-rule-write-good": "^2.0.0",
+    "typescript": "^4.3.5"
   },
   "resolutions": {
     "terser": "4.8.0"
