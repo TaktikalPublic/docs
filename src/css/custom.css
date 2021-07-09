@@ -86,6 +86,10 @@ a:focus {
   margin-bottom: 1rem;
 }
 
+.admonition-heading h5 {
+  color: #000;
+}
+
 @media only screen and (max-width: 996px) {
   .footer__bottom {
     margin-top: 1rem;
