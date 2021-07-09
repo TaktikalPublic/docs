@@ -49,6 +49,13 @@ html[data-theme='dark'] .navbar {
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -74,20 +81,13 @@ main {
   background-color: var(--main-content-color);
 }
 
-a,
-a:hover,
-a:focus {
-  text-decoration: none;
-  color: inherit;
+.admonition-heading h5 {
+  color: #000;
 }
 
 .footer__bottom {
   margin-top: 3rem;
   margin-bottom: 1rem;
-}
-
-.admonition-heading h5 {
-  color: #000;
 }
 
 @media only screen and (max-width: 996px) {
