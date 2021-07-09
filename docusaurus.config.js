@@ -1,6 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Docs',
+  title: 'Taktikal Docs',
   url: 'https://taktikal.gitlab.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -10,6 +10,7 @@ module.exports = {
   projectName: 'docs',
   themeConfig: {
     navbar: {
+      hideOnScroll: true,
       title: '',
       logo: {
         alt: 'Logo',
@@ -29,8 +30,17 @@ module.exports = {
       ],
     },
     prism: { additionalLanguages: ['csharp', 'php'] },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     footer: {
-      style: 'dark',
+      logo: {
+        alt: 'Logo',
+        src: 'logo-dark.svg',
+        srcDark: 'logo-light.svg',
+      },
       links: [
         {
           title: 'Docs',
@@ -58,15 +68,28 @@ module.exports = {
           ],
         },
         {
+          title: 'Taktikal',
           items: [
             {
-              label: 'Taktikal',
-              href: 'https://taktikal.is',
+              label: 'Help',
+              href: 'https://taktikal.is/help',
+            },
+            {
+              label: 'About us',
+              href: 'https://taktikal.io/about',
+            },
+            {
+              label: 'Blog',
+              href: 'https://taktikal.io/blog/news',
+            },
+            {
+              label: 'Contact',
+              href: 'https://taktikal.io/contact',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Taktikal Docs Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} • Taktikal Docs. Built with Docusaurus.`,
     },
     algolia: {
       apiKey: 'ce54ae98420beac5aa8e3ad58d7786ce', // Read access key
