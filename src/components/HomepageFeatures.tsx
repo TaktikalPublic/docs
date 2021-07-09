@@ -10,8 +10,8 @@ const FeatureList = [
     Svg: require('/img/homepage/smart_forms.svg').default,
     description: (
       <>
-        Sérhannaðir ferlar til innleiðingar í app og vefsíður. Smart Forms er
-        sveigjanlegasta lausnin í vöruframboði Taktikal.
+        Custom integrated processes for apps and websites. Smart Forms is the
+        most adaptable solution in Taktikal's product range.
       </>
     ),
   },
@@ -21,8 +21,8 @@ const FeatureList = [
     Svg: require('/img/homepage/drop_and_sign.svg').default,
     description: (
       <>
-        Drop & Sign er einföld leið sem hentar fyrir öll PDF skjöl sem eru klár
-        til undirritunar og búið er að fylla út.
+        A simple way suitable for all PDF documents that are ready for signing
+        and have been filled.
       </>
     ),
   },
@@ -32,9 +32,9 @@ const FeatureList = [
     Svg: require('/img/homepage/fill_and_sign.svg').default,
     description: (
       <>
-        Fylltu út og undirritaðu PDF skjöl í vafranum. Lausnin gerir
-        viðskiptavinum fyrirtækja kleift að fylla út og undirrita skjöl - án
-        aðkomu starfsmanna
+        Fill the form and sign PDF documents in your browser. The product
+        enables customers to complete and sign documents - without the
+        involvement of employees.
       </>
     ),
   },
@@ -42,7 +42,7 @@ const FeatureList = [
     title: 'API',
     href: '/docs/api',
     Svg: require('/img/homepage/api.svg').default,
-    description: <>Vefþjónustur fyrir undirskriftir og auðkenningar</>,
+    description: <>API web services for signatures and authentication.</>,
   },
 ];
 
