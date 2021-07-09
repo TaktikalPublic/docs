@@ -1,0 +1,31 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+.feature_item {
+  transition: box-shadow 0.25s ease;
+  border-radius: 15px;
+}
+
+.feature_item:hover {
+  box-shadow: rgba(3, 0, 113, 0) 0px 0px 0px inset,
+    rgba(40, 35, 251, 0.3) 0px 10px 20px;
+}
+
+html[data-theme='dark'] .feature_item:hover {
+  box-shadow: rgba(3, 0, 113, 0) 0px 0px 0px inset, #12e8a8 0px 10px 20px;
+}
+
+.feature_item:hover #paper-plane {
+  animation: movePaperPlane 1s ease infinite;
+}
