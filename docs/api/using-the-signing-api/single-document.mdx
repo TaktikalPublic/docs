@@ -1,6 +1,8 @@
 ---
-title: 'Usage'
+title: 'Single document'
 ---
+
+import TestSignatures from '/docs/shared/test-signatures.md';
 
 Starting a signing process is a single `POST` request. To start a signing
 process a valid PDF document is needed and a list of `Signees` that need to sign
@@ -282,19 +284,12 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
 
 ### Helpful dev values
 
-When working with the dev API you can use fake `ssn` to fake a signature. This
+When working with the `dev` API you can use fake `ssn` to fake a signature. This
 is useful for testing and has no added cost.
 
 ### Test signatures
 
-| Name | SSN | Phone number | | --------------------------- | ---------- |
------------- | | Undirritari Björn Egilsson | 5000101886 | 1111111 | |
-Undirritari Jónsson | 6000101990 | 2222222 | | Sigrún prófari Helgadóttir |
-6000101991 | 3333333 | | Dagný prófari Bjarkadóttir | 6000101992 | 4444444 | |
-Bogmundur Meistari Fálkason | 6000101993 | 5555555 | | Hásmundur Helgason |
-6000101994 | 6666666 | | Björnmundur Þórsson | 6000101995 | 7777777 | | Símalína
-Magnúsdóttir | 6000101996 | 8888888 | | Maðkur þór Jónsson | 6000101997 |
-9999999 |
+<TestSignatures />
 
 ### Signing with test Ssn
 

@@ -19,17 +19,6 @@ When including it in an iframe, you should add `?iframe=true` to the URL.
 This will remove the footer and logo and reduce to spacing above the content so
 it fits better within your page.
 
-If the `processKey` in `/s/:processKey` contains a colon (`:`) the Sequence
-Signing page will be rendered instead of the normal signing page.
-
-The `processKey` will be expected to be of the format:
-
-```html
-sp00000:si0000000000,sp11111:si1111111111,sp33333:si3333333333
-```
-
-If not, the user will receive a "Link is not valid" error.
-
 ## Knowing when the signing is complete
 
 When the user has finished signing, the following will be sent up to the parent
