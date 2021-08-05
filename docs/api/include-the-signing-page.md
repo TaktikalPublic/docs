@@ -52,8 +52,9 @@ If this is not done the user will keep seeing the Control Code indefinitely.
 
 ## Iframe events
 
-The iframe will send events up to the parent. The events are:
+The iframe will send events up to the parent via [postMessage][postMessage]. 
 
+The events are:
 - `document_signed` this event is send after a document is signed, if it's not the last document
 - `signing_completed` this event is send when the last document is signed. 
 
@@ -143,3 +144,5 @@ window.parent.postMessage(
   '*'
 );
 ```
+
+[postMessage]: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
