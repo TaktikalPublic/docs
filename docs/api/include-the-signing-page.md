@@ -52,8 +52,10 @@ If this is not done the user will keep seeing the Control Code indefinitely.
 
 ## Iframe events
 
-The iframe will send events up to the parent via [postMessage][postMessage]. 
+The iframe will send events up to the parent via [postMessage][postMessage]. The events can bee used to know what's happening inside the iframe. 
 
+
+### sucsess events 
 The events are:
 - `document_signed` this event is send after a document is signed, if it's not the last document
 - `signing_completed` this event is send when the last document is signed. 
@@ -85,11 +87,14 @@ window.parent.postMessage(
 When the user has finished signing, the following will be sent up to the parent
 window:
 
-If this is a sequence with tree documents then the events returned will be `document_signed` for the first two documents and `signing_completed` for the last document.
+### example scenario 
+
+If the iframe URL is for a single document, then the event `signing_completed` will be sent up to the parent on signing.
+
+If the iframe URL is for a sequence of documents then the events returned will be `document_signed` for the n-1 documents and `signing_completed` for the last document.
 
 
 When you receive this `signing_completed` event, you can safely remove the iframe.
-
 
 
 ### Error events
