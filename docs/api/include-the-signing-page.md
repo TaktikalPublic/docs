@@ -52,7 +52,7 @@ If this is not done the user will keep seeing the Control Code indefinitely.
 
 ## Iframe events
 
-The iframe will send events upp to the parent. The events are:
+The iframe will send events up to the parent. The events are:
 
 ```tsx
 window.parent.postMessage(
