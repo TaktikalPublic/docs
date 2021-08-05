@@ -134,7 +134,7 @@ namespace Webhook
 {
     public class WebhookEventPayload
     {
-~~~~        public Guid Id { get; set; }
+        public Guid Id { get; set; }
         public SignedDocumentEventData EventData { get; set; }
         public EventSignature EventSignature { get; set; }
     }
