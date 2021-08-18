@@ -1,4 +1,9 @@
 module.exports = {
+  portal: [
+    'portal/introduction',
+    'portal/settings',
+    'portal/changing-language',
+  ],
   'fill-and-sign': [
     'fill-and-sign/introduction',
     'fill-and-sign/api',
@@ -48,6 +53,9 @@ module.exports = {
     'api/environment-widget',
     'api/include-the-signing-page',
   ],
-  'drop-and-sign': ['drop-and-sign/introduction'],
+  'drop-and-sign': [
+    'drop-and-sign/introduction',
+    'drop-and-sign/senda-skjal-i-undirritun',
+  ],
   'smart-forms': ['smart-forms/introduction'],
 };

@@ -5,6 +5,17 @@ import '../css/custom.css';
 
 const FeatureList = [
   {
+    title: 'Portal',
+    href: '/docs/portal',
+    Svg: require('/img/homepage/portal.svg').default,
+    description: (
+      <>
+        Custom integrated processes for apps and websites. Smart Forms is the
+        most adaptable solution in Taktikal's product range.
+      </>
+    ),
+  },
+  {
     title: 'Smart Forms',
     href: '/docs/smart-forms',
     Svg: require('/img/homepage/smart_forms.svg').default,

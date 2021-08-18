@@ -18,6 +18,7 @@ module.exports = {
         srcDark: 'logo-light.svg',
       },
       items: [
+        { to: '/docs/portal', label: 'Portal', position: 'left' },
         { to: '/docs/fill-and-sign', label: 'Fill & Sign', position: 'left' },
         { to: '/docs/drop-and-sign', label: 'Drop & Sign', position: 'left' },
         { to: '/docs/smart-forms', label: 'Smart Forms', position: 'left' },
