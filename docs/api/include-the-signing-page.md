@@ -2,7 +2,7 @@
 title: 'Include the Signing Page via Iframe'
 ---
 
-# Getting Started
+## Getting Started
 
 A typical link to our signing page looks like so:
 
@@ -19,23 +19,46 @@ When including it in an iframe, you should add `?iframe=true` to the URL.
 This will remove the footer and logo and reduce to spacing above the content so
 it fits better within your page.
 
-If the `processKey` in `/s/:processKey` contains a colon (`:`) the Sequence
-Signing page will be rendered instead of the normal signing page.
+## Configure the iframe
 
-The `processKey` will be expected to be of the format:
+### Skip the greeting step
+
+When the user opens the link, the first screen he sees will be a greeting
+screen. You can skip this step by adding `skipGreeting=true` to the query.
 
 ```html
-sp00000:si0000000000,sp11111:si1111111111,sp33333:si3333333333
+?iframe=true&skipGreeting=true
 ```
 
-If not, the user will receive a "Link is not valid" error.
+This will make the first screen the user sees be the screen with the Document to
+sign. This is useful when including the iframe within a bigger process.
 
-## Knowing when the signing is complete
+### Skip the end screen
 
-When the user has finished signing, the following will be sent up to the parent
-window:
+When the user has completed signing he will be moved from the Control Code
+screen to an end screen.
 
-When all documents have been signed `signing_completed` is sent.
+If you want to skip showing the end screen and manage what happens after signing
+is complete yourself, you can add `showEndScreen=false` to the query.
+
+```
+?iframe=true&showEndScreen=false
+```
+
+If this option is provided the user will not be moved from the Control Code
+screen by us, and it expects the parent page to remove the iframe in some way.
+If this is not done the user will keep seeing the Control Code indefinitely.
+
+
+## Iframe events
+
+The iframe will send events up to the parent via [postMessage][postMessage]. The events can bee used to know what's happening inside the iframe. 
+
+
+### sucsess events 
+The events are:
+- `document_signed` this event is send after a document is signed, if it's not the last document
+- `signing_completed` this event is send when the last document is signed. 
 
 ```tsx
 window.parent.postMessage(
@@ -43,7 +66,6 @@ window.parent.postMessage(
     type: 'document_signed',
     processKey, // string
     signeeKey, // string
-    signedDocument,
   },
   '*'
 );
@@ -61,47 +83,21 @@ window.parent.postMessage(
 );
 ```
 
-The `signedDocument` object has the following structure:
 
-```tsx
-interface SignedDocument {
-  content: string;
-  digest: string;
-  fileName: string;
-}
-```
+When the user has finished signing, the following will be sent up to the parent
+window:
 
-When you receive this event, you can safely remove the iframe.
+### example scenario 
 
-# Skip the greeting step
+If the iframe URL is for a single document, then the event `signing_completed` will be sent up to the parent on signing.
 
-When the user opens the link, the first screen he sees will be a greeting
-screen. You can skip this step by adding `skipGreeting=true` to the query.
+If the iframe URL is for a sequence of documents then the events returned will be `document_signed` for the n-1 documents and `signing_completed` for the last document.
 
-```html
-?iframe=true&skipGreeting=true
-```
 
-This will make the first screen the user sees be the screen with the Document to
-sign. This is useful when including the iframe within a bigger process.
+When you receive this `signing_completed` event, you can safely remove the iframe.
 
-# Skip the end screen
 
-When the user has completed signing he will be moved from the Control Code
-screen to an end screen.
-
-If you want to skip showing the end screen and manage what happens after signing
-is complete yourself, you can add `showEndScreen=false` to the query.
-
-```
-?iframe=true&showEndScreen=false
-```
-
-If this option is provided the user will not be moved from the Control Code
-screen by us, and it expects the parent page to remove the iframe in some way.
-If this is not done the user will keep seeing the Control Code indefinitely.
-
-# Error events
+### Error events
 
 Under certain conditions (or if an error occurred) the user will not be able to
 sign the document. These conditions include the document having already been
@@ -153,3 +149,5 @@ window.parent.postMessage(
   '*'
 );
 ```
+
+[postMessage]: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
