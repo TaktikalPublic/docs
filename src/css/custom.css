@@ -82,8 +82,16 @@ main {
   background-color: var(--main-content-color);
 }
 
+.admonition-note h5 {
+  color: black !important;
+}
+
 .admonition-heading h5 {
-  color: #000;
+  color: #fff;
+}
+
+html[data-theme='dark'] .admonition-heading h5 {
+  color: black;
 }
 
 .footer__bottom {
