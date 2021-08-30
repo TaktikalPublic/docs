@@ -3,4 +3,4 @@ title: 'Introduction'
 slug: '/portal'
 ---
 
-TODO: Add Introduction text
+Coming  soon
