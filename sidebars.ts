@@ -28,7 +28,6 @@ module.exports = {
             'fill-and-sign/editor/keyboard-shortcuts/field-list-shortcuts',
           ],
         },
-        'fill-and-sign/editor/creating-your-first-fill-and-sign-document',
         'fill-and-sign/editor/deactivate-a-flow',
         'fill-and-sign/editor/multiple-signees',
         'fill-and-sign/editor/draft-and-publish',
