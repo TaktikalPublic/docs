@@ -31,7 +31,7 @@ module.exports = {
         'fill-and-sign/editor/deactivate-a-flow',
         'fill-and-sign/editor/multiple-signees',
         'fill-and-sign/editor/draft-and-publish',
-        'fill-and-sign/editor/wip-document-delivery',
+        'fill-and-sign/editor/document-delivery',
       ],
     },
   ],
