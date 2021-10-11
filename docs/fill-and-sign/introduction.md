@@ -205,7 +205,7 @@ We've published our Fill & Sign document, but we have yet to specify what should
 happen after the user has filled out and signed the document. You can learn how
 to configure the document's delivery here:
 
-[WIP: Document Delivery](fill-and-sign/editor/wip-document-delivery)
+[Document Delivery](fill-and-sign/editor/document-delivery)
 
 Once the document's delivery has been set up, you can move onto adding it to
 your company's website:
