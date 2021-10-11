@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://docs.taktikal.is",
   "scripts": {
+    "prepare": "husky install",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
@@ -13,7 +14,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "lint": "./node_modules/.bin/textlint docs"
+    "lint": "./node_modules/.bin/textlint docs",
+    "tscheck": "tsc --noEmit"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.3",
@@ -41,6 +43,7 @@
     "@types/react": "^17.0.13",
     "@types/react-helmet": "^6.1.1",
     "@types/react-router-dom": "^5.1.7",
+    "husky": "^7.0.2",
     "prettier": "^2.3.1",
     "textlint": "^12.0.0",
     "textlint-rule-alex": "^3.0.0",
