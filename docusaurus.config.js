@@ -49,22 +49,22 @@ module.exports = {
             {
               label: 'Drop & Sign',
               to: '/docs/drop-and-sign',
-              activeBasePath: 'docs/drop-and-sign',
+              activebasepath: 'docs/drop-and-sign',
             },
             {
               label: 'Fill & Sign',
               to: '/docs/fill-and-sign',
-              activeBasePath: 'docs/fill-and-sign',
+              activebasepath: 'docs/fill-and-sign',
             },
             {
               label: 'Smart Forms',
               to: '/docs/smart-forms',
-              activeBasePath: 'docs/smart-forms',
+              activebasepath: 'docs/smart-forms',
             },
             {
               label: 'API',
               to: '/docs/api',
-              activeBasePath: 'docs/api',
+              activebasepath: 'docs/api',
             },
           ],
         },
