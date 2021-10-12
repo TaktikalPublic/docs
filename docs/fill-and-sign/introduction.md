@@ -93,6 +93,8 @@ We see that there are 4 selected fields, which is correct. By clicking on the
 
 ![Creating your first Fill & Sign Document/Untitled 11.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-11.png)
 
+### Format
+
 You may also have noticed that there is a "Format" dropdown. It supports a few
 different formats that the user's input must match:
 
@@ -100,6 +102,8 @@ different formats that the user's input must match:
 
 We can use this to, for example, set the format email field's format to "Email".
 This means that the user will have to add a valid email address to continue.
+
+### Current document
 
 Let's take a look at the current version of the document in Fill & Sign to see
 how the document looks. You can do that by clicking "Draft" in the "Open in Fill
@@ -121,6 +125,8 @@ as few of the options as he wants.
 
 ![Creating your first Fill & Sign Document/Untitled 16.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-16.png)
 
+### Checkbox
+
 For this, we can use checkboxes. Click the "Checkbox" button in the top-left of
 the window to start adding a checkbox.
 
@@ -129,6 +135,8 @@ the window to start adding a checkbox.
 Then click to add the checkbox in the correct place:
 
 ![Creating your first Fill & Sign Document/Untitled 18.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-18.png)
+
+### Resizing checkboxes
 
 It's a bit bigger than I would like. We can drag the corner to resize it.
 
@@ -145,6 +153,8 @@ the fields as he wants.
 
 ![Creating your first Fill & Sign Document/Untitled 21.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-21.png)
 
+### Radio buttons
+
 The next section is slightly different.
 
 ![Creating your first Fill & Sign Document/Untitled 22.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-22.png)
@@ -160,6 +170,8 @@ As before, click to add the field in the correct place.
 
 ![Creating your first Fill & Sign Document/Untitled 24.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-24.png)
 
+### Resizing radio buttons
+
 Just a tad bigger than I would like. We can make the field smaller like we did
 with the checkbox.
 
@@ -169,6 +181,8 @@ Once again, we can duplicate these fields by holding `Alt` (`⌥ Option` on macO
 and click-and-dragging the copy of the radio option to where you want it to be.
 
 ![Creating your first Fill & Sign Document/Untitled 26.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-26.png)
+
+### Radio button grouping
 
 Radios work slightly differently than textfields and checkboxes. If you take a
 look at the list of fields on the left side, you notice that we have a `radio`
