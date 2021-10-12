@@ -50,7 +50,7 @@ module.exports = {
     'api/webhooks',
     'api/activity-log',
     'api/environment-widget',
-    'api/include-the-signing-page',
+    'api/signing-page-iframe',
   ],
   'drop-and-sign': [
     'drop-and-sign/introduction',
