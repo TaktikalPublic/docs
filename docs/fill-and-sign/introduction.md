@@ -24,6 +24,8 @@ so:
 
 ![Creating%20your%20first%20Fill%20&%20Sign%20Document%2027bc5648a39f45e2901a8e8615e3c9f6/Untitled.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled.png)
 
+### Textfields
+
 For the first part, we have four textfields:
 
 ![Creating%20your%20first%20Fill%20&%20Sign%20Document%2027bc5648a39f45e2901a8e8615e3c9f6/Untitled%201.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-01.png)
@@ -78,6 +80,8 @@ let's make them required.
 Select them all by clicking and dragging a rectangle around them.
 
 ![Creating your first Fill & Sign Document/Untitled 9.png](/img/fill-and-sign/creating-your-first-fill-and-sign-document/Untitled-09.png)
+
+### Field properties
 
 Once the fields are selected, you can take a look at the top-right section of
 the editor:
