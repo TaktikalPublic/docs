@@ -2,10 +2,6 @@
 title: 'Senda skjal í undirritun'
 ---
 
-:::note TODO: Translate to English
-
-:::
-
 Með Drop & Sign getur þú sent skjal til eins eða fleiri einstaklinga, ákveðið
 undirritenda, hvort undirritunin birtist efst eða neðst í skjali og hvort
 viðtakendur þurfi að auðkenna sig áður en þeir undirrita og valið sendingarmáta.

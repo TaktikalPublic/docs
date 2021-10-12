@@ -2,4 +2,4 @@
 title: 'Settings'
 ---
 
-TODO: Add Settings text
+Coming soon...
