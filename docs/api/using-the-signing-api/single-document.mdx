@@ -107,6 +107,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
 - `RequiresAuth` Default value is `false`. If set to true then all signers need
   to use there e-Id to authenticate before being able to view the document.
 - `pdfFileName` is only needed if `pdfDocument` is provided.
+- `user` the email address of the user that owns this signingProcess. If the user has access to app.taktikal.is he will see this signingProcess in his activity log
 - `SignInOrder` Default value is `false`. Will control the order of signees. It
   will only send a signing request to the first person in the `signees` list to
   begin with. After he has signed the next signee and so on.
