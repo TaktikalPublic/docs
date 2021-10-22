@@ -9,7 +9,7 @@ up the form of a Fill & Sign Document.
 :::note Note
 
 If you haven't created a Fill & Sign document yet, take a look at
-[Creating your first Fill & Sign Document](/fill-and-sign/creating-your-first-document).
+[Creating your first Fill & Sign Document](/docs/fill-and-sign/creating-your-first-document).
 
 :::
 
@@ -227,10 +227,9 @@ Once published, you will see the button turn green.
 </p>
 
 <p>
-  Once the document's delivery has been set up, you can move onto adding it to
-  your company's website:
+  Once the document's delivery has been set up, you can figure out how you want to use the Document (e.g. adding it to your Website or sharing it via a Link):
   <br />
-  <a href="/docs/fill-and-sign/usage/dynamic-website">Adding Fill & Sign to a Website</a>
+  <a href="/docs/fill-and-sign/usage">Using a Fill & Sign Document</a>
 </p>
 
 <p>
