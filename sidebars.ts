@@ -6,13 +6,16 @@ module.exports = {
   ],
   'fill-and-sign': [
     'fill-and-sign/introduction',
-    'fill-and-sign/api',
+    'fill-and-sign/creating-your-first-document',
+    'fill-and-sign/setting-up-your-first-document',
     {
       type: 'category',
-      label: 'Installation',
+      label: 'Usage',
       items: [
-        'fill-and-sign/installation/dynamic-website',
-        'fill-and-sign/installation/static-website',
+        'fill-and-sign/usage/usage',
+        'fill-and-sign/usage/website',
+        'fill-and-sign/usage/link',
+        'fill-and-sign/usage/single-page-application',
       ],
     },
     {

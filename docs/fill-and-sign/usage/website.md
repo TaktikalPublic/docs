@@ -1,5 +1,5 @@
 ---
-title: Add to a static website
+title: Add to a Website
 ---
 
 For each document you want to include, add a button element with the
@@ -9,8 +9,12 @@ For each document you want to include, add a button element with the
 <button data-filekey="{{fileKey}}" class="btn">Fylla út skjal</button>
 ```
 
-You should then add `/utils.js` to pages where the user should be able to open
-Fill & Sign documents.
+You should then add our `utils.js` script to pages where the user should be able
+to open Fill & Sign documents.
+
+```html
+<script src="https://fill.taktikal.is/utils.js"></script>
+```
 
 This script will do the following:
 
@@ -25,7 +29,7 @@ The script should be included after elements with the `data-filekey` attribute.
 <body>
   <button data-filekey="{{fileKey}}">Open</button>
 
-  <script src="https://fill.dropandsign.is/utils.js"></script>
+  <script src="https://fill.taktikal.is/utils.js"></script>
 </body>
 ```
 
