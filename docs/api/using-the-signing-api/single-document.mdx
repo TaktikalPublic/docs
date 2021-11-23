@@ -48,13 +48,13 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   "SignatureLocation": "TopFirstPage",
   "createSignees": [
     {
-      "name": "Bjarki Heiðar Ingason",
-      "ssn": "0509815689",
-      "address": "Vattarás 5",
-      "postalCode": "210",
-      "city": "Garðabær",
-      "email": "bjarki@taktikal.is",
-      "phoneNumber": "8433600",
+      "name": "Test User",
+      "ssn": "123456-7890",
+      "address": "Address 5",
+      "postalCode": "555",
+      "city": "Reykjavík",
+      "email": "testUser@taktikal.is",
+      "phoneNumber": "1234567",
       "communicationDeliveryType": "none", // can be "none, email, sms" if the SignatureType is Simple, SMS can not be used
       "SignatureType": "Qualified" // Can be Qualified or Simple
       "hidePersonalCode": false // ssn will be hidden in the signature appearance if true
@@ -73,10 +73,10 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
             "name": "Prófunar Maður",
             "ssn": "5000101886",
             "phoneNumber": "1111111",
-            "email": "bjarki@taktikal.is",
-            "address": "Vattarás 5",
-            "postalCode": "210",
-            "city": "Garðabær",
+            "email": "test@taktikal.is",
+            "address": "Prófunar heimilisfang",
+            "postalCode": "101",
+            "city": "Reykjavík",
             "key": "sib413a317b8ea",
             "signed": false,
             "processKey": "sp288498d30317",
@@ -107,7 +107,9 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
 - `RequiresAuth` Default value is `false`. If set to true then all signers need
   to use there e-Id to authenticate before being able to view the document.
 - `pdfFileName` is only needed if `pdfDocument` is provided.
-- `user` the email address of the user that owns this signingProcess. If the user has access to app.taktikal.is he will see this signingProcess in his activity log
+- `user` the email address of the user that owns this signingProcess. If the
+  user has access to app.taktikal.is he will see this signingProcess in his
+  activity log
 - `SignInOrder` Default value is `false`. Will control the order of signees. It
   will only send a signing request to the first person in the `signees` list to
   begin with. After he has signed the next signee and so on.
@@ -120,16 +122,25 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
 - `signees` see below
 
 ### Signee
-Each signingProcess has one or more signees. Each signee can have it's own settings
-- `Reason` This is the reason for signing. This will be displayed on this signees signature in the PDF.
-- `HidePersonalCode` The SSN can be displayed on the PDF if the `signatureType` is `Qualified` That can be turned of by setting this to `true`.
-- `communicationDeliveryType` is used to notify a signee that a document is waiting for him. The options are: 
-  - `none` That is used when iframing the signing page for example or if you would like to take care of contacting the signee.
-  - `email` Taktikal will send the signee an email in your company name, notifing the signee that a document is waiting for him.
-  - `sms` Taktikal can send an sms to a signee notifing the signee that a document is waiting for him. This can not be used if `signatureType` is `simple`
+
+Each signingProcess has one or more signees. Each signee can have it's own
+settings
+
+- `Reason` This is the reason for signing. This will be displayed on this
+  signees signature in the PDF.
+- `HidePersonalCode` The SSN can be displayed on the PDF if the `signatureType`
+  is `Qualified` That can be turned of by setting this to `true`.
+- `communicationDeliveryType` is used to notify a signee that a document is
+  waiting for him. The options are:
+  - `none` That is used when iframing the signing page for example or if you
+    would like to take care of contacting the signee.
+  - `email` Taktikal will send the signee an email in your company name,
+    notifing the signee that a document is waiting for him.
+  - `sms` Taktikal can send an sms to a signee notifing the signee that a
+    document is waiting for him. This can not be used if `signatureType` is
+    `simple`
 - `url` that the signee can use to view and sign the document.
 - `signed` is a read only boolean value
-
 
 ### Examples code in different languages
 
@@ -261,13 +272,13 @@ Each signingProcess has one or more signees. Each signee can have it's own setti
     SignatureLocation: 'TopFirstPage',
     createSignees: [
       {
-        name: 'Bjarki Heiðar Ingason',
-        ssn: '0509815689',
-        address: 'Vattarás 5',
-        postalCode: '210',
-        city: 'Garðabær',
-        email: 'bjarki@taktikal.is',
-        phoneNumber: '8433600',
+        name: 'Test User',
+        ssn: '123456-7890',
+        address: 'Address 5',
+        postalCode: '555',
+        city: 'Reykjavík',
+        email: 'testUser@taktikal.is',
+        phoneNumber: '1234567',
         communicationDeliveryType: 'none',
         hidePersonalCode: false,
       },

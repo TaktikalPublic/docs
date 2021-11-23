@@ -58,12 +58,12 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
   "EventData": {
     "Signees": [
       {
-        "Name": "Bjarki Heiðar Ingason",
-        "Ssn": "0509815689",
-        "PhoneNumber": "8433600",
-        "Email": "bjarki@taktikal.is",
-        "Address": "Vattarási 5",
-        "City": "Garðabær",
+        "Name": "Test User",
+        "Ssn": "123456-7890",
+        "PhoneNumber": "1234567",
+        "Email": "testUser@taktikal.is",
+        "Address": "Address 5",
+        "City": "Reykjavík",
         "Key": "si67067e3aaa2c",
         "Signed": true,
         "ProcessKey": "spae707",
@@ -108,7 +108,7 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
     "EventType": 2, // "AllSigned",
     "Meta": {
       "PdfUrl": "https://fill.dropandsign.is/api/flow/665a62b4a97a/pdf",
-      "PdfFieldData": "{\"Nafn\":\"Bjarki Heiðar Ingason\",\"notendaheiti\":\"info\",\"Kennitala\":\"0509815689\"}"
+      "PdfFieldData": "{\"Nafn\":\"Test User\",\"notendaheiti\":\"info\",\"Kennitala\":\"123456-7890\"}"
     }
   },
   "EventSignature": {
