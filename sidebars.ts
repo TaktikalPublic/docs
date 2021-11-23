@@ -1,9 +1,5 @@
 module.exports = {
-  portal: [
-    'portal/introduction',
-    'portal/settings',
-    'portal/changing-language',
-  ],
+  portal: ['portal/introduction', 'portal/settings'],
   'fill-and-sign': [
     'fill-and-sign/introduction',
     'fill-and-sign/creating-your-first-document',
