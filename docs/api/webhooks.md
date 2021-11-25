@@ -59,7 +59,7 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
     "Signees": [
       {
         "Name": "Test User",
-        "Ssn": "123456-7890",
+        "Ssn": "1234567890",
         "PhoneNumber": "1234567",
         "Email": "testUser@taktikal.is",
         "Address": "Address 5",
