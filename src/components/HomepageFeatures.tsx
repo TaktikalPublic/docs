@@ -16,17 +16,6 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Smart Forms',
-    href: '/docs/smart-forms',
-    Svg: require('/img/homepage/smart_forms.svg').default,
-    description: (
-      <>
-        Custom integrated processes for apps and websites. Smart Forms is the
-        most adaptable solution in Taktikal's product range.
-      </>
-    ),
-  },
-  {
     title: 'Drop & Sign',
     href: '/docs/drop-and-sign',
     Svg: require('/img/homepage/drop_and_sign.svg').default,
@@ -46,6 +35,17 @@ const FeatureList = [
         Fill the form and sign PDF documents in your browser. The product
         enables customers to complete and sign documents - without the
         involvement of employees.
+      </>
+    ),
+  },
+  {
+    title: 'Smart Forms',
+    href: '/docs/smart-forms',
+    Svg: require('/img/homepage/smart_forms.svg').default,
+    description: (
+      <>
+        Custom integrated processes for apps and websites. Smart Forms is the
+        most adaptable solution in Taktikal's product range.
       </>
     ),
   },
