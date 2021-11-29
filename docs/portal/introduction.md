@@ -3,12 +3,13 @@ title: 'Introduction'
 slug: '/portal'
 ---
 
-The Portal is the entry for all of Taktikal's services and user & account
-management.
+The [Portal](https://app.taktikal.is) is the entry point for all of Taktikal's
+solutions as well as where user & account management takes place.
 
 ## Drop & Sign
 
-Drop & Sign is used to send documents for signing.
+Drop & Sign is Taktikal’s solution for digital signing. Any type of PDF document
+can be uploaded and sent to one or more recipients to request their signature.
 
 See [Drop & Sign](/docs/drop-and-sign) for detailed description
 
@@ -16,8 +17,9 @@ See [Drop & Sign](/docs/drop-and-sign) for detailed description
 
 ## Activity Log
 
-Information for all processes from Drop & Sign and AML/KYC Smart Forms are
-displayed here as shown.
+Information on activity, i.e. who initiated a process and when, as well as who
+signed what and when, for all processes from Drop & Sign and AML/KYC Smart Forms
+are displayed here as shown.
 
 Specific permission can be granted for a company administrator to see activity
 log of certain users within it's company. Contact us at hjalp@taktikal.is to
