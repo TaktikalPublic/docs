@@ -2,24 +2,25 @@
 title: 'Sequence signing'
 ---
 
-Sequence signing is a group of signingProcesses. By using a sequence to group them to gether we can create flexible workflows.
-The most common work flow is a sequence with `n` many signeers and `n` many documents. By grouping them in a sequence we can have a link that links to many documents,
-the customer only gets one email requesting him to sign all the documents.
-When all signeers have signed all documents Taktikal will send all the documents in a single email. 
+Sequence signing is a group of signingProcesses. By using a sequence to group
+them to gether we can create flexible workflows. The most common work flow is a
+sequence with `n` many signeers and `n` many documents. By grouping them in a
+sequence we can have a link that links to many documents, the customer only gets
+one email requesting him to sign all the documents. When all signeers have
+signed all documents Taktikal will send all the documents in a single email.
 
 A sequence is an array of signingProcesses and additional properties
 
-
-| Property                    | Data type        | Description |
-| --------------------------- | ---------- | ------------ |
-| `User`          | string | email address of owner of this sequence      |
-| `RequiresAuth`  | bool | if set to true a signee needs to authenticate to be able to view the documents before signing      |
-| `SignInOrder`   | true | if set to true the first signee in the sequence needs to sign all documents before signee nr 2 is notified      |
-
+| Property       | Data type | Description                                                                                                |
+| -------------- | --------- | ---------------------------------------------------------------------------------------------------------- |
+| `User`         | string    | email address of owner of this sequence                                                                    |
+| `RequiresAuth` | bool      | if set to true a signee needs to authenticate to be able to view the documents before signing              |
+| `SignInOrder`  | true      | if set to true the first signee in the sequence needs to sign all documents before signee nr 2 is notified |
 
 ### Example request
+
 ```json
-  
+
 POST /api/management/signing/sequence HTTP/1.1
 Host: onboardingdev.taktikal.is
 Content-Type: application/json
@@ -34,7 +35,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   "CreateSigningProcesses": [
     {
       "pdfDocument": "Base 64 string of PDF document",
-      "pdfFileName": "dummy.pdf",
+      "pdfFileName": "example.pdf",
       "flowKey": "fd9583b6be91",
       "meta": {
         "myKey": "myvalue"
@@ -70,7 +71,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
     },
     {
       "pdfDocument": "Base 64 string of PDF document",
-      "pdfFileName": "dummy.pdf",
+      "pdfFileName": "example.pdf",
       "flowKey": "fd9583b6be91",
       "meta": {
         "myKey": "myvalue"
@@ -109,9 +110,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
 
 ```
 
-
-
-### Example response 
+### Example response
 
 ```json
 {
@@ -192,7 +191,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
       "meta": {
         "myKey": "myvalue"
       },
-      "pdfFileName": "dummy.pdf",
+      "pdfFileName": "example.pdf",
       "attachments": [],
       "attachmentReferences": [],
       "requiresAuth": false,
@@ -242,7 +241,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
       "meta": {
         "myKey": "myvalue"
       },
-      "pdfFileName": "dummy.pdf",
+      "pdfFileName": "example.pdf",
       "attachments": [],
       "attachmentReferences": [],
       "requiresAuth": false,
