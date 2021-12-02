@@ -55,5 +55,5 @@ module.exports = {
     'drop-and-sign/introduction',
     'drop-and-sign/senda-skjal-i-undirritun',
   ],
-  'smart-forms': ['smart-forms/introduction'],
+  'smart-forms': ['smart-forms/introduction', 'smart-forms/examples'],
 };
