@@ -1,7 +1,3 @@
----
-title: 'Test Signatures'
----
-
 | Name                        | SSN        | Phone number |
 | --------------------------- | ---------- | ------------ |
 | Undirritari Björn Egilsson  | 5000101886 | 1111111      |
