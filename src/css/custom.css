@@ -82,6 +82,11 @@ main {
   background-color: var(--main-content-color);
 }
 
+main img {
+  border: 1px solid #e5ecff;
+  border-radius: 4px;
+}
+
 .admonition-note h5 {
   color: black !important;
 }
