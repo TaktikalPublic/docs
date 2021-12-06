@@ -21,7 +21,7 @@ A sequence is an array of signingProcesses and additional properties
 
 ```json
 
-POST /api/management/signing/sequence HTTP/1.1
+POST /api/management/signing/sequential HTTP/1.1
 Host: onboardingdev.taktikal.is
 Content-Type: application/json
 Accept: application/json
