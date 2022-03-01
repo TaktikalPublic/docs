@@ -12,6 +12,7 @@ module.exports = {
         'fill-and-sign/usage/website',
         'fill-and-sign/usage/link',
         'fill-and-sign/usage/single-page-application',
+        'fill-and-sign/usage/language',
       ],
     },
     {
