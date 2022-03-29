@@ -64,9 +64,9 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
         "Email": "testUser@taktikal.is",
         "Address": "Address 5",
         "City": "Reykjavík",
-        "Key": "si67067e3aaa2c",
+        "Key": "si7abef56540bd49f9a9b8a33969a9cf8c",
         "Signed": true,
-        "ProcessKey": "spae707",
+        "ProcessKey": "sp231f52f87d6f4caaa2e29ecac92d055b",
         "CommunicationDeliveryType": "Email"
       }
     ],
@@ -75,15 +75,7 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
     "SignedDocument": "JVBERi0xLjQ...",
     "Attachments": [
       {
-        "FileName": "auka_skjal.pdf",
-        "FileContent": "JVBE..."
-      },
-      {
-        "FileName": "auka_skjal_2.pdf",
-        "FileContent": "JVBER..."
-      },
-      {
-        "FileName": "mega skjal.pdf",
+        "FileName": "mega document.pdf",
         "FileContent": "JVBERi0x..."
       }
     ],
@@ -93,22 +85,14 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
         "FileName": "logo_4x.png",
         "ContentLength": 9376,
         "ContentType": "image/png",
-        "Url": "https://app.taktikal.is/attachment/sp30524e1d5d9b/at73bb/logo_4x.png",
-        "Description": "Description goes here"
-      },
-      {
-        "Id": "at8d9b",
-        "FileName": "large_file.zip",
-        "ContentLength": 6923449,
-        "ContentType": "application/zip",
-        "Url": "https://app.taktikal.is/attachment/sp30524e1d5d9b/at8d9b/large_file.zip",
+        "Url": "https://app.taktikal.is/attachment/sp231f52f87d6f4caaa2e29ecac92d055b/at73bb/logo_4x.png",
         "Description": "Description goes here"
       }
     ],
     "EventType": 2, // "AllSigned",
     "Meta": {
       "PdfUrl": "https://fill.dropandsign.is/api/flow/665a62b4a97a/pdf",
-      "PdfFieldData": "{\"Nafn\":\"Test User\",\"notendaheiti\":\"info\",\"Kennitala\":\"123456-7890\"}"
+      "PdfFieldData": "{\"Nafn\":\"Test User\",\"userInfo\":\"info\",\"ssn\":\"123456-7890\"}"
     }
   },
   "EventSignature": {
