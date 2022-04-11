@@ -97,7 +97,7 @@ Webhooks can be managed via the API. All routes can be viewed in Swagger
   },
   "EventSignature": {
     "TimeStamp": 637030223561542290,
-    "Guid": "3e9922f5fd7f4a9baa75a3fa90cb9caf",
+    "Guid": "2065b6c0-934f-4d18-81d3-46c29b913311",
     "Signature": "5qN29xaZHKZ65PLMB6ajRgpcxUU9dFRAXhkw36C2d38="
   }
 }
