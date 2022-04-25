@@ -19,7 +19,7 @@ The data Taktikal sends via webhook are wrapped in a `WebhookEventPayload`
 object that has an `Id`, `EventData`, and `EventSignature` See example data
 below.
 
-- `EventSignature` is used to validate that Taktikal is the one how sends the
+- `EventSignature` is used to validate that Taktikal is the one who sends the
   data. `TimeStamp` and `GUID` hashed with the `apiKey` to create a `Signature`.
   If the `Signature` that is calculated is not a match to the value in the
   event, it was not sent by Taktikal.
@@ -175,13 +175,13 @@ namespace Webhook
     public static class WebhookHelpers
     {
         /// <summary>
-        /// Creates a signature for a given timestamp and guid using a secret
+        /// Creates a signature for a given timestamp and guid using a apiKey
         /// </summary>
-        public static string GetSignature(long timestamp, Guid guid, string secret)
+        public static string GetSignature(long timestamp, Guid guid, string apiKey)
         {
-            secret = secret ?? "";
+            apiKey = apiKey ?? "";
             var encoding = new UTF8Encoding();
-            byte[] keyByte = encoding.GetBytes(secret);
+            byte[] keyByte = encoding.GetBytes(apiKey);
             byte[] messageBytes = encoding.GetBytes($"{timestamp}{guid}");
             using (var hmacsha256 = new HMACSHA256(keyByte))
             {
