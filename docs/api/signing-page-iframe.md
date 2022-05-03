@@ -162,6 +162,28 @@ interface ErrorEventPayload {
 }
 ```
 
+
+## Language
+
+Language support depends on the specific Signing Page (such as for Smart Forms), but our standard Signing Page supports the following languages:
+
+| Language | Country Code
+|---|---|
+| English | en-us |
+| German | de |
+| French | fr |
+| Icelandic | is |
+| Danish | da |
+| Norwegian Bokmål | nb |
+| Swedish | sv |
+
+You can set the language of the Signing Page iframe by adding `lng={country_code}` to the query.
+
+```
+/s/:processKey/:signeeKey?iframe=true&lng=de
+```
+
+
 ## FAQ
 
 ### What size should I give the Iframe?
