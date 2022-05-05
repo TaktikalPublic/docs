@@ -60,7 +60,8 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
       "communicationDeliveryType": "none", // can be "none, email, sms" if the SignatureType is Simple, SMS can not be used
       "SignatureType": "Qualified", // Can be Qualified or Simple
       "hidePersonalCode": false, // ssn will be hidden in the signature appearance if true
-      "Reason": "Undirritun"
+      "Reason": "Undirritun",
+      "Language": "En" // optional parameter
     }
   ]
 }
@@ -146,6 +147,20 @@ settings
 - `signed` is a read only boolean value
 - `languages` optional parameter to set the UI language to one of the supported languages in app.taktikal
 
+
+#### Signee language
+Currently we support 7 languages. 
+| Language | short code |
+| ---- | ---- | 
+| Icelandic | `Is`| 
+| English | `En` | 
+| Danish | `Dk` | 
+| Norwegian | `Nb` | 
+| Swedish | `Se` | 
+| German | `De` | 
+| French | `Fr` | 
+
+
 ### Examples code in different languages
 
 <Tabs
@@ -187,7 +202,9 @@ var data = new CreateSigningProcess
             PhoneNumber = "3332211",
             CommunicationDeliveryType = CommunicationDeliveryType.Email,
             Reason = "buyer",
-            HidePersonalCode = false
+            HidePersonalCode = false,
+            SignatureType = ElectronicSignatureType.Qualified,
+            Language = SigneeLanguageType.En
         }
     }
 };
@@ -243,6 +260,8 @@ public class CreateSignee
 
     //The auth0 UserId
     public string User { get; set; }
+
+    public SigneeLanguageType Language { get; set; }
 }
 
 public enum CommunicationDeliveryType
@@ -262,6 +281,42 @@ public enum SignatureLocationType
 {
     TopFirstPage,
     BottomLastPage
+}
+
+/// <summary>
+/// Signee language, the languages in this list are supported in the front end UI.
+/// </summary>
+public enum SigneeLanguageType
+{
+    NotSet = 0,
+    /// <summary>
+    /// Icelandic
+    /// </summary>
+    Is,
+    /// <summary>
+    /// US English
+    /// </summary>
+    En,
+    /// <summary>
+    /// Norwegian Bokmål
+    /// </summary>
+    Nb,
+    /// <summary>
+    /// Danish
+    /// </summary>
+    Dk,
+    /// <summary>
+    /// German
+    /// </summary>
+    De,
+    /// <summary>
+    /// French
+    /// </summary>
+    Fr,
+    /// <summary>
+    /// Swedish
+    /// </summary>
+    Sv
 }
 ```
 
@@ -303,9 +358,7 @@ var config = {
     Accept: 'application/json',
     Authorization:
       'Basic XmM0ZTdkODZjNzI0OmFwaS0wYjU3OTBjY2EzYjQ0YWU4OTBiOTUwOGRjMDgz',
-    'Content-Type': 'application/json',
-    Cookie:
-      'ss-id=md157s6X6h1coQz6JzBH; ss-opt=temp; ss-pid=9CCMLBze8d1p0C4OnpdT',
+    'Content-Type': 'application/json'
   },
   data: data,
 };
