@@ -129,7 +129,7 @@ namespace Webhook
     public class EventSignature
     {
         public long TimeStamp { get; set; }
-        public Guid Guid { get; set; }
+        public string Guid { get; set; }
         public string Signature { get; set; }
     }
 
@@ -177,7 +177,7 @@ namespace Webhook
         /// <summary>
         /// Creates a signature for a given timestamp and guid using a apiKey
         /// </summary>
-        public static string GetSignature(long timestamp, Guid guid, string apiKey)
+        public static string GetSignature(long timestamp, string guid, string apiKey)
         {
             apiKey = apiKey ?? "";
             var encoding = new UTF8Encoding();
