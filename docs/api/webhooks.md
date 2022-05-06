@@ -33,15 +33,15 @@ Will retry two more times. Unless an HTTP Status code 406 (not accepted) is
 received that marks that we will not try again.
 
 ## Webhook event types
+Taktikal sents out webhook events for `SignedDocument`, `AllSigned`, `Canceled` or `Expired`, 
 
-1. `SignedDocument` This is an event that is run for each signing except the
-   last one
-2. `AllSigned` This is an event triggered on the last sign on a process
-3. `Auth` This is an event that is run when user authenticates with e-id
-4. `Signup` Signup message event
-5. `Canceled` This is an event that is run when a signing process is canceled
-6. `Expired` Not all signees have signed within the time frame
-7. `Reminder` a reminder to sign a document
+| Event name | Event description | contains document | integer value |
+| ------- | ------- | ------- | ------- |
+| `SignedDocument` | This is an event that is run for each signing except the last one. | :red_circle:  | 1 |
+| `AllSigned` |  This is an event triggered on the last signature. | :white_check_mark:  | 2 |
+| `Canceled` | This is an event that is run when a signing process is canceled. | :red_circle:  | 5 |
+| `Expired` | each signing process needs to be signed within 30 days. If it expiers this event will be triggered | :white_check_mark:  | 6 |
+
 
 ## Register a webhook
 
