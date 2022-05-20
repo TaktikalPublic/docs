@@ -175,18 +175,17 @@ namespace Webhook
     public static class WebhookHelpers
     {
         /// <summary>
-        /// Creates a signature for a given timestamp and guid using a apiKey
+        /// Verifies that signature matches your api key
         /// </summary>
-        public static string GetSignature(long timestamp, string guid, string apiKey)
+        public static bool ValidateSignature(this WebhookEventPayload webhookEvent, string yourSecretApiKey)
         {
-            apiKey = apiKey ?? "";
             var encoding = new UTF8Encoding();
-            byte[] keyByte = encoding.GetBytes(apiKey);
-            byte[] messageBytes = encoding.GetBytes($"{timestamp}{guid}");
+            byte[] keyByte = encoding.GetBytes(yourSecretApiKey);
+            byte[] messageBytes = encoding.GetBytes($"{webhookEvent.EventSignature.TimeStamp}{webhookEvent.EventSignature.Guid}");
             using (var hmacsha256 = new HMACSHA256(keyByte))
             {
-                byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
-                return Convert.ToBase64String(hashmessage);
+              byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
+              return Convert.ToBase64String(hashmessage) == webhookEvent.EventSignature.Signature;
             }
         }
     }
