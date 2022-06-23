@@ -1,0 +1,58 @@
+---
+title: 'Introduction'
+slug: '/api'
+---
+
+import Link from '@docusaurus/Link';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+export const CreateLink = (props) => {
+  const { path, isDotCom, isAPIpath } = props;
+  const domain = `taktikal.${isDotCom ? 'com' : 'is'}${
+    isAPIpath ? '/api' : ''
+  }`;
+  const url = `https://${path}.${domain}`;
+  return <Link to={url}>{url}</Link>;
+};
+
+export const LinkList = (props) => {
+  const { isDotCom, isAPIpath } = props;
+  let devPath = '';
+  let prodPath = '';
+  if (isAPIpath) {
+    devPath = 'app-dev';
+    prodPath = 'app';
+  } else {
+    devPath = `${isDotCom ? 'core-dev' : 'onboardingdev'}`;
+    prodPath = `${isDotCom ? 'core' : 'onboarding'}`;
+  }
+  return (
+    <ul>
+      <li>
+        Dev:{' '}
+        <CreateLink path={devPath} isDotCom={isDotCom} isAPIpath={isAPIpath} />
+      </li>
+      <li>
+        Prod:{' '}
+        <CreateLink path={prodPath} isDotCom={isDotCom} isAPIpath={isAPIpath} />
+      </li>
+    </ul>
+  );
+};
+
+There is a `Dev` and `Prod` version of the API available they can be found here
+
+<BrowserOnly>
+  {() => {
+    const isDotCom = window.location.hostname === 'docs.taktikal.com';
+    return (
+      <>
+        <h3>API paths</h3>
+        <LinkList isDotCom={isDotCom} isAPIpath={true} />
+        <h3>Frontend Paths</h3>
+        <LinkList isDotCom={isDotCom} isAPIpath={false} />
+      </>
+    );
+}}
+
+</BrowserOnly>
