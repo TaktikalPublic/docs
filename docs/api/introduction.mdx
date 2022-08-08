@@ -19,7 +19,7 @@ export const LinkList = (props) => {
   const { isDotCom, isAPIpath } = props;
   let devPath = '';
   let prodPath = '';
-  if (isAPIpath) {
+  if (!isAPIpath) {
     devPath = 'app-dev';
     prodPath = 'app';
   } else {
@@ -48,9 +48,9 @@ There is a `Dev` and `Prod` version of the API available they can be found here
     return (
       <>
         <h3>API paths</h3>
-        <LinkList isDotCom={isDotCom} isAPIpath={false} />        
+        <LinkList isDotCom={isDotCom} isAPIpath={true} />        
         <h3>Frontend Paths</h3>
-        <LinkList isDotCom={isDotCom} isAPIpath={true} />
+        <LinkList isDotCom={isDotCom} isAPIpath={false} />
       </>
     );
 }}
