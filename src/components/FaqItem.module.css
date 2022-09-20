@@ -1,0 +1,52 @@
+.button {
+  border: 1px solid #e5ecff;
+  padding: 24px 32px;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.buttonHover:hover {
+  background-color: var(--color-background);
+}
+
+.button p {
+  margin-bottom: 0;
+}
+
+.button[data-is-open="false"]:hover {
+  background-color: var(--color-background);
+}
+
+.button[data-is-open="true"] .container img {
+  transform: rotate(45deg);
+}
+
+.text {
+  margin-top: 32px;
+  color: var(--ifm-font-color-base);
+  font-weight: 400;
+}
+
+.displayText {
+  display: inherit;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container p {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.container img {
+  transition: transform 0.5s ease;
+}
