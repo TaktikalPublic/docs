@@ -5,7 +5,7 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
 
 *,
 *:before,
@@ -13,6 +13,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--ifm-font-family-base);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* You can override the default Infima variables here. */
@@ -28,26 +33,12 @@
   --ifm-heading-color: #2823fb;
   --ifm-button-color: #fff;
   --ifm-button-background-color: #2823fb;
-  --ifm-footer-background-color: #f7f9ff;
+  --color-background: #f7f9ff;
   --ifm-container-width: 1200px;
   --main-content-color: #fff;
-}
-
-html {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-html[data-theme='dark'] {
-  --ifm-color-primary: #12e8a8;
-  --ifm-color-primary-dark: #5a91ea;
-  --ifm-heading-color: #12e8a8;
-  --ifm-navbar-link-color: #fff;
-  --ifm-navbar-link-hover-color: #12e8a8;
-  --ifm-footer-background-color: #333;
-}
-
-html[data-theme='dark'] .navbar {
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+  --ifm-font-family-base: "Source Sans Pro", sans-serif;
+  --ifm-font-color-base: #474747;
+  --section-heading-color: #008174;
 }
 
 a,
@@ -66,10 +57,6 @@ a:focus {
 
 .main-wrapper {
   background-color: var(--main-content-color);
-}
-
-html[data-theme='dark'] .main-wrapper {
-  --main-content-color: #111;
 }
 
 main {
@@ -95,10 +82,6 @@ main img {
   color: #fff;
 }
 
-html[data-theme='dark'] .admonition-heading h5 {
-  color: black;
-}
-
 .footer__bottom {
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -108,4 +91,27 @@ html[data-theme='dark'] .admonition-heading h5 {
   .footer__bottom {
     margin-top: 1rem;
   }
+}
+
+section {
+  max-width: var(--ifm-container-width);
+  margin: 0 auto;
+  padding: var(--ifm-footer-padding-vertical)
+    var(--ifm-footer-padding-horizontal);
+}
+
+.DocSearch-Search-Icon {
+  color: var(--ifm-color-primary) !important;
+}
+
+.DocSearch-Button-Placeholder {
+  color: #919cff;
+}
+
+.DocSearch-Button {
+  border: 1px solid #e5ecff !important;
+}
+
+.DocSearch {
+  --docsearch-searchbox-background: var(--color-background);
 }

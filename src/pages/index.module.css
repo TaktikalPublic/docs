@@ -16,24 +16,187 @@
   margin-bottom: 0px;
 }
 
-.card {
-  height: 150px;
-  width: 120px;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 15px;
-  transition: all 0.2s ease;
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
-.card:hover {
+.container h1 {
+  font-size: 53px;
+  font-weight: 600;
+}
+
+.container h1:nth-child(2) {
+  margin-bottom: 100px;
+}
+
+.container p {
+  color: var(--ifm-font-color-base);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  align-self: flex-start;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  gap: 16px;
 }
 
-.card:not(:last-child) {
-  margin-right: 20px;
+.button img {
+  transition: all 0.25s ease-in-out;
+  margin-bottom: 0;
 }
 
-.card__title {
-  text-align: center;
+.button:hover img {
+  transform: translateX(5px);
+}
+
+.button p {
+  color: var(--ifm-color-primary) !important;
+  margin-bottom: 0;
+  position: relative;
+  background-color: transparent;
+  z-index: 10;
+  line-height: 24px;
+}
+
+.button p:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -1px;
+  bottom: 3px;
+  height: 6.5px;
+  width: 103%;
+  background-color: #ecf2fe;
+  z-index: -1;
+  border-radius: 2px;
+}
+
+.sectionHeader {
+  text-transform: uppercase;
+  color: var(--section-heading-color);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.sectionHeader p {
+  color: var(--ifm-font-color-base);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.featureSection {
+  position: relative;
+}
+
+.featureSection:nth-child(2) {
+  margin-bottom: 32px;
+}
+
+.featureSection:last-child {
+  margin-bottom: 48px;
+}
+
+.faqHeading {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.faqText {
+  color: var(--ifm-font-color-base);
+}
+
+.introContainer {
+  display: flex;
+  gap: 120px;
+}
+
+.introContainer:first-child {
+  margin-top: 60px;
+}
+
+.introContainer p {
+  color: var(--ifm-font-color-base);
+  font-size: 18px;
+}
+
+.introContainer p:first-child {
+  font-size: 16px;
+}
+
+.introContainer h1 {
+  font-size: 53px;
+}
+
+.backToTop {
+  margin-left: auto;
+  margin-top: 128px;
+  gap: 8px;
+}
+
+.backToTop:hover img {
+  transform: translateY(-5px);
+}
+
+.backToTop img {
+  transition: transform 0.25s ease;
+}
+
+.faqContainer {
+  display: flex;
+  gap: 48px;
+}
+
+.faqContainer > :first-child {
+  flex-basis: 42%;
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-basis: 79%;
+}
+
+@media screen and (max-width: 950px) {
+  .faqContainer {
+    display: initial;
+  }
+
+  .faqItemContainer {
+    margin-top: 32px;
+  }
+
+  .introContainer {
+    flex-direction: column-reverse;
+  }
+
+  .introContainer img {
+    max-width: 500px;
+  }
+
+  .sectionHeader:nth-child(2) {
+    margin-top: 32px;
+  }
 }

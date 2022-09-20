@@ -1,112 +1,50 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Taktikal Docs',
-  url: 'https://taktikal.gitlab.io',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'favicon.ico',
-  organizationName: 'taktikal',
-  projectName: 'docs',
+  title: "Taktikal Docs",
+  url: "https://taktikal.gitlab.io",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "favicon.ico",
+  organizationName: "taktikal",
+  projectName: "docs",
   themeConfig: {
     navbar: {
       hideOnScroll: true,
-      title: '',
+      title: "",
       logo: {
-        alt: 'Logo',
-        src: 'logo-dark.svg',
-        srcDark: 'logo-light.svg',
+        alt: "Logo",
+        src: "svg/Logo.svg",
       },
       items: [
-        { to: '/docs/portal', label: 'Portal', position: 'left' },
-        { to: '/docs/drop-and-sign', label: 'Drop & Sign', position: 'left' },
-        { to: '/docs/fill-and-sign', label: 'Fill & Sign', position: 'left' },
-        { to: '/docs/smart-forms', label: 'Smart Forms', position: 'left' },
-        { to: '/docs/api', label: 'API', position: 'left' },
-        {
-          href: 'https://gitlab.com/taktikal/docs',
-          label: 'GitLab',
-          position: 'right',
-        },
+        { to: "/docs/portal", label: "Portal", position: "left" },
+        { to: "/docs/drop-and-sign", label: "Drop & Sign", position: "left" },
+        { to: "/docs/fill-and-sign", label: "Fill & Sign", position: "left" },
+        { to: "/docs/smart-forms", label: "Smart Forms", position: "left" },
+        { to: "/docs/api", label: "API", position: "left" },
       ],
     },
-    prism: { additionalLanguages: ['csharp', 'php'] },
+    prism: { additionalLanguages: ["csharp", "php"] },
     colorMode: {
-      defaultMode: 'light',
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
-    },
-    footer: {
-      logo: {
-        alt: 'Logo',
-        src: 'logo-dark.svg',
-        srcDark: 'logo-light.svg',
-      },
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Drop & Sign',
-              to: '/docs/drop-and-sign',
-              activebasepath: 'docs/drop-and-sign',
-            },
-            {
-              label: 'Fill & Sign',
-              to: '/docs/fill-and-sign',
-              activebasepath: 'docs/fill-and-sign',
-            },
-            {
-              label: 'Smart Forms',
-              to: '/docs/smart-forms',
-              activebasepath: 'docs/smart-forms',
-            },
-            {
-              label: 'API',
-              to: '/docs/api',
-              activebasepath: 'docs/api',
-            },
-          ],
-        },
-        {
-          title: 'Taktikal',
-          items: [
-            {
-              label: 'Help',
-              href: 'https://taktikal.is/help',
-            },
-            {
-              label: 'About us',
-              href: 'https://taktikal.io/about',
-            },
-            {
-              label: 'Blog',
-              href: 'https://taktikal.io/blog/news',
-            },
-            {
-              label: 'Contact',
-              href: 'https://taktikal.io/contact',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} • Taktikal Docs. Built with Docusaurus.`,
+      defaultMode: "light",
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
     algolia: {
-      apiKey: 'ce54ae98420beac5aa8e3ad58d7786ce', // Read access key
-      indexName: 'taktikal',
+      apiKey: "ce54ae98420beac5aa8e3ad58d7786ce", // Read access key
+      indexName: "taktikal",
     },
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.ts'),
-          editUrl: 'https://gitlab.com/taktikal/docs/-/edit/master',
+          sidebarPath: require.resolve("./sidebars.ts"),
+          editUrl: "https://gitlab.com/taktikal/docs/-/edit/master",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/defaults.css"),
         },
       },
     ],

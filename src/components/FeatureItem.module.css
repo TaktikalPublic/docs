@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  position: relative;
+  gap: 32px;
+  padding: 48px 32px;
+  background-color: var(--color-background);
+  border-radius: 4px;
+  transition: box-shadow 0.15s ease;
+}
+
+.container:hover {
+  box-shadow: 0 8px 10px rgb(40 35 251 / 20%);
+}
+
+.container img {
+  align-self: center;
+  flex-basis: 64px;
+}
+
+.textContainer {
+  display: block;
+}
+
+.textContainer p {
+  color: var(--ifm-font-color-base);
+}
+
+.button {
+  margin-bottom: 0;
+  opacity: 0;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.button a {
+  display: flex;
+}
+
+.button img {
+  margin-left: 4px;
+  margin-bottom: 0;
+  transform: rotate(-90deg);
+}
+
+.container:hover .button {
+  display: inline;
+  opacity: 100%;
+  transition: transform 0.5s ease;
+  transform: translateY(5px);
+}

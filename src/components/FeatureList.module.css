@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  gap: 32px;
+}
+
+.container > * {
+  flex-basis: 50%;
+}
+
+.container:nth-child(2) {
+  margin-top: 48px;
+}
+
+.featureItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-basis: 90%;
+}
+
+.heading {
+  text-transform: uppercase;
+  color: var(--section-heading-color);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.heading p {
+  color: var(--ifm-font-color-base);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 950px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .heading:nth-child(2) {
+    margin-top: 32px;
+  }
+}
