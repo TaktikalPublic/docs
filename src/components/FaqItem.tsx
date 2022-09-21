@@ -15,8 +15,16 @@ export const FaqItem = ({ heading, text }: Props) => {
 
   const setButtonHeight = () => {
     if (!buttonRef.current || !headingRef.current) return;
+
+    let height = buttonRef.current.scrollHeight;
+
+    // Edge case for FireFox due to different scrollHeight calculations from other browsers
+    if (navigator.userAgent.match(/firefox|fxios/i)) {
+      height += 24;
+    }
+
     buttonRef.current.style.height = isOpen
-      ? `${buttonRef.current.scrollHeight}px`
+      ? `${height}px`
       : `${headingRef.current.scrollHeight + 48}px`; // 48 is top + bottom padding (24+24)
   };
 
