@@ -25,8 +25,8 @@ export default function Home() {
             <div style={{ marginBottom: "32px" }}>This is Taktikal Docs</div>
           </h1>
           <p>
-            Here you can find all the information related to our product, from
-            basic instructions to advanced information for developers.
+            Here you can find documentation related to our API and products —
+            from basic instructions to advanced information for developers.
           </p>
           <div className={styles.buttonContainer}>
             <div className={styles.button} style={{ marginBottom: "8px" }}>
@@ -37,7 +37,7 @@ export default function Home() {
             </div>
             <div className={styles.button}>
               <Link to="#customers">
-                <p>I am a customer</p>
+                <p>I am not a developer so just give me the basics</p>
               </Link>
               <img src="/svg/ArrowRight.svg" />
             </div>
@@ -55,7 +55,7 @@ export default function Home() {
         />
         <FeatureList
           featureItems={FEATURE_ITEMS_CUSTOMERS}
-          heading="For Customers"
+          heading="The Basics"
           id="customers"
           text="Basic information and detailed instructions"
         />
@@ -67,9 +67,9 @@ export default function Home() {
             <h2 className={styles.sectionHeader}>Faqs</h2>
             <p className={styles.faqHeading}>Do you need help?</p>
             <p className={styles.faqText}>
-              These are the most common asked questions. If your question isn't
-              answered here, you will find more information in the Help & FAQs
-              page:
+              These are the most commonly asked questions. If your question
+              isn't answered here, you can find more information in the Help &
+              FAQs page:
             </p>
             <div className={styles.button}>
               <Link to="https://taktikal.is/help">

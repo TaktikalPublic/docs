@@ -44,7 +44,7 @@ export const FEATURE_ITEMS_CUSTOMERS: FeatureItem[] = [
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    heading: "How to convert multiple PDFs at the same time?",
+    heading: "How to send multiple PDFs at the same time?",
     text: "Sending multiple PDFs at the same time is easy! All you need to do is select multiple files and those files will be included in the signing request.",
   },
   {
@@ -62,10 +62,10 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     heading:
       "Can the document be changed after the signing process has started?",
-    text: "No, the document cannot be changed afterwards.",
+    text: "No, the document cannot be changed after the process starts. This is done to ensure the integrity of the document and the signature.",
   },
   {
-    heading: "How do I keep the signed document with me?",
+    heading: "How do I store the signed document?",
     text: "You will be sent the signed document via e-mail upon signing completion.",
   },
 ];
