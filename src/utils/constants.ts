@@ -44,7 +44,7 @@ export const FEATURE_ITEMS_CUSTOMERS: FeatureItem[] = [
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    heading: "How to send multiple PDFs at the same time?",
+    heading: "How do I send multiple PDFs at the same time?",
     text: "Sending multiple PDFs at the same time is easy! All you need to do is select multiple files and those files will be included in the signing request.",
   },
   {
@@ -66,7 +66,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     heading: "How do I store the signed document?",
-    text: "You will be sent the signed document via e-mail upon signing completion.",
+    text: "You will be sent the signed document via e-mail upon signing completion. Documents are accessible within our portal for up to 30 days from signing completion.",
   },
 ];
 
