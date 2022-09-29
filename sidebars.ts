@@ -48,6 +48,7 @@ module.exports = {
       ],
     },
     'api/webhooks',
+    'api/email-templates',
     'api/activity-log',
     'api/environment-widget',
     'api/signing-page-iframe',
