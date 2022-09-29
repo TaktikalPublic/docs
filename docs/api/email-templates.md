@@ -62,4 +62,4 @@ The following values are available for use in the message
 | {{companySsn}} | The social security number of your company * |
 | {{flowName}} | The name of the flow |
 | {{customer.Meta.VARIABLE}} | where VARIABLE is your custom field created via smart form | 
-* *if provied by you
+* *if provided by you
