@@ -49,4 +49,13 @@ module.exports = {
       },
     ],
   ],
+  scripts: [
+    {
+      src: "https://portal-api.taktikal.is/plausible/js/plausible.js",
+      defer: true,
+      async: true,
+      "data-domain": "docs.taktikal.is",
+      "data-api": "https://portal-api.taktikal.is/plausible/api/event",
+    },
+  ],
 };
