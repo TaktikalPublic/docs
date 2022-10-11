@@ -31,7 +31,8 @@ module.exports = {
       respectPrefersColorScheme: false,
     },
     algolia: {
-      apiKey: "ce54ae98420beac5aa8e3ad58d7786ce", // Read access key
+      appId: "NN3GF28C9V",
+      apiKey: "ae07f62e33c11329b545428aa2081b2f", // Read access key
       indexName: "taktikal",
     },
   },
