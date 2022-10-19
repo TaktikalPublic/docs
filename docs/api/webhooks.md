@@ -1,17 +1,18 @@
 ---
-title: 'Webhooks'
+title: "Webhooks"
 ---
 
 After a document has been signed it can be delivered back to your system.
 
 ## Definition of terms
 
-The following keys are needed to work with webhooks
+The following keys are needed to work with webhooks.
 
 - `companyKey` the baseKey used to identify a company.
 - `flowKey` There can be many flows each with its own delivery methods
   registered.
-- `apiKey` The key used to validate that Taktikal sends the webhook data.
+- `webhookSignatureKey` The key used to validate that Taktikal sends the webhook
+  data.
 
 ## Webhook
 
@@ -20,9 +21,9 @@ object that has an `Id`, `EventData`, and `EventSignature` See example data
 below.
 
 - `EventSignature` is used to validate that Taktikal is the one who sends the
-  data. `TimeStamp` and `GUID` hashed with the `apiKey` to create a `Signature`.
-  If the `Signature` that is calculated is not a match to the value in the
-  event, it was not sent by Taktikal.
+  data. `TimeStamp` and `GUID` hashed with the `yourSecretWebhookKey` to create
+  a `Signature`. If the `Signature` that is calculated is not a match to the
+  value in the event, it was not sent by Taktikal.
 - `EventData` contains all `signee` that signed the document and all their
   personal information provided in this process. The signed document is stored
   as a base64 string in the field `SignedDocument`
@@ -33,15 +34,16 @@ Will retry two more times. Unless an HTTP Status code 406 (not accepted) is
 received that marks that we will not try again.
 
 ## Webhook event types
-Taktikal sents out webhook events for `SignedDocument`, `AllSigned`, `Canceled` or `Expired`, 
 
-| Event name | Event description | contains document | integer value |
-| ------- | ------- | ------- | ------- |
-| `SignedDocument` | This is an event that is run for each signing except the last one. | :red_circle:  | 1 |
-| `AllSigned` |  This is an event triggered on the last signature. | :white_check_mark:  | 2 |
-| `Canceled` | This is an event that is run when a signing process is canceled. | :red_circle:  | 5 |
-| `Expired` | each signing process needs to be signed within 30 days. If it expiers this event will be triggered | :white_check_mark:  | 6 |
+Taktikal sents out webhook events for `SignedDocument`, `AllSigned`, `Canceled`
+or `Expired`,
 
+| Event name       |  Event description                                                                                 | contains document  | integer value |
+| ---------------- | -------------------------------------------------------------------------------------------------- | ------------------ | ------------- |
+| `SignedDocument` |  This is an event that is run for each signing except the last one.                                | :red_circle:       |  1            |
+|  `AllSigned`     |   This is an event triggered on the last signature.                                                | :white_check_mark: |  2            |
+| `Canceled`       | This is an event that is run when a signing process is canceled.                                   | :red_circle:       | 5             |
+| `Expired`        | each signing process needs to be signed within 30 days. If it expires this event will be triggered | :white_check_mark: | 6             |
 
 ## Register a webhook
 
@@ -175,12 +177,12 @@ namespace Webhook
     public static class WebhookHelpers
     {
         /// <summary>
-        /// Verifies that signature matches your api key
+        /// Verifies that signature matches your webhook signature key
         /// </summary>
-        public static bool ValidateSignature(this WebhookEventPayload webhookEvent, string yourSecretApiKey)
+        public static bool ValidateSignature(this WebhookEventPayload webhookEvent, string yourWebhookSignatureKey)
         {
             var encoding = new UTF8Encoding();
-            byte[] keyByte = encoding.GetBytes(yourSecretApiKey);
+            byte[] keyByte = encoding.GetBytes(yourWebhookSignatureKey);
             byte[] messageBytes = encoding.GetBytes($"{webhookEvent.EventSignature.TimeStamp}{webhookEvent.EventSignature.Guid}");
             using (var hmacsha256 = new HMACSHA256(keyByte))
             {
