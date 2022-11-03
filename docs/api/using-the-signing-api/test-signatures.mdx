@@ -3,12 +3,39 @@ title: 'Test Signatures'
 ---
 
 import TestSignatures from '/docs/shared/_test-signatures.md';
+import TestStandardSignatures from '/docs/shared/_test-standard-signatures.md';
 
 ### Signing with test Ssn
 
 On `dev` we can use any of the test signees.
 
-When using the test ssn number you still need to go to the link and click
+When using the test users you still need to go to the link and click
 through the process. This was made to test the signing experience.
 
+### Standard Signatures
+When requested for otp code you can enter any number combination
+<TestStandardSignatures />
+
+#### Example
+```json
+{
+    "Name": "John Doe",
+    "PhoneNumber": "+12222222222",
+    "Email": "my@email.com",
+    "SignatureType": "Simple"
+}
+```
+
+### Fully Qualified Signatures
 <TestSignatures />
+
+#### Example
+```json
+{
+    "Name": "Undirritari Jónsson",
+    "Ssn": "6000101990",
+    "PhoneNumber": "2222222",
+    "Email": "ingo+test2@taktikal.is",
+    "SignatureType": "Qualified"
+}
+```
