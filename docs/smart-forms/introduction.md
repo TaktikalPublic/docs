@@ -1,6 +1,6 @@
 ---
-title: 'Introduction'
-slug: '/smart-forms'
+title: "Introduction"
+slug: "/smart-forms"
 ---
 
 Smart Forms is the most adaptable solution in Taktikal's product range. The
@@ -37,8 +37,9 @@ to databases and checklists for contracts and documents.
 - <b>Attachment</b>: Customers can send additional attachments with digitally
   signed documents.
 
-- <b>Strong digital signature</b>: Taktikal only uses fully qualified signatures
-  that meet the highest safety requirements.
+- <b>Standard and Qualified digital signatures</b>: Taktikal offers both
+  qualified signatures (QES) that meet the EIDAS requirements and Standard
+  signatures with 2 factor verification for increased security.
 
 - <b>Sealed document</b>: All digitally signed documents are sealed so that the
   document cannot be modified without invalidating the signature.
