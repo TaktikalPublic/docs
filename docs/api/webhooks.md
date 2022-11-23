@@ -50,6 +50,24 @@ or `Expired`,
 Webhooks can be managed via the API. All routes can be viewed in Swagger
 [here](https://onboarding.taktikal.is/api/swagger-ui/#/webhook).
 
+## Recommended approach
+
+When you receive a webhook event, we recommend that you offload it to your own
+message queue service for further processing and respond to us with Http status
+code `200`.
+
+This minimizes the risk of data loss as any error during processing of message
+can be seen and replayed within your own infrastructure.
+
+```mermaid
+sequenceDiagram
+    Taktikal->>+My webhook endpoint: webhook sent
+    My webhook endpoint->>My webhook endpoint: Validate signature
+    My webhook endpoint->>+My Message Queue: Send to my message queue
+    My webhook endpoint->>-Taktikal: Send 200
+    My Message Queue->>+My Internal Service: Process Message
+```
+
 ## Code examples
 
 ### Example webhook event
