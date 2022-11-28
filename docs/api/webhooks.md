@@ -21,7 +21,7 @@ object that has an `Id`, `EventData`, and `EventSignature` See example data
 below.
 
 - `EventSignature` is used to validate that Taktikal is the one who sends the
-  data. `TimeStamp` and `GUID` hashed with the `yourSecretWebhookKey` to create
+  data. `TimeStamp` and `GUID` hashed with the `webhookSignatureKey` to create
   a `Signature`. If the `Signature` that is calculated is not a match to the
   value in the event, it was not sent by Taktikal.
 - `EventData` contains all `signee` that signed the document and all their
