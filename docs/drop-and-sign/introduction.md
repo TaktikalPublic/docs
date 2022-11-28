@@ -1,6 +1,6 @@
 ---
-title: 'Introduction'
-slug: '/drop-and-sign'
+title: "Introduction"
+slug: "/drop-and-sign"
 ---
 
 Drop & Sign is a simple solution suitable for all PDF documents that are ready
@@ -30,8 +30,9 @@ solution support multiple signees for a single document.
 - <b>Verified timestamp</b>: All documents are verified upon signature. Further
   information about the signature can be found within the document.
 
-- <b>Strong digital signature</b>: Taktikal only uses fully qualified signatures
-  that meet the highest safety requirements.
+- <b>Standard and Qualified digital signatures</b>: Taktikal offers both
+  qualified signatures (QES) that meet the EIDAS requirements and Standard
+  signatures with 2 factor verification for increased security.
 
 - <b>Sealed document</b>: All digitally signed documents are sealed so that the
   document cannot be modified without invalidating the signature.

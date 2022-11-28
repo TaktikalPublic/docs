@@ -1,10 +1,12 @@
 ---
-title: 'Single document'
+title: "Single document"
 ---
 
-import TestSignatures from '/docs/shared/_test-signatures.md';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TestSignatures from "/docs/shared/_test-signatures.md";
+import TestStandardSignatures from "/docs/shared/_test-standard-signatures.md";
+import TestSkraSignatures from "/docs/shared/_test-signatures-skra.md";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 Starting a signing process is a single `POST` request. To start a signing
 process a valid PDF document is needed and a list of `Signees` that need to sign
@@ -145,22 +147,22 @@ settings
     `simple`
 - `url` that the signee can use to view and sign the document.
 - `signed` is a read only boolean value
-- `languages` optional parameter to set the UI language to one of the supported languages in app.taktikal
-
+- `languages` optional parameter to set the UI language to one of the supported
+  languages in app.taktikal
 
 #### Signee language
-Currently we support 7 languages. 
 
-| Language | short code |
-| ---- | ---- | 
-| Icelandic | `Is`| 
-| English | `En` | 
-| Danish | `Da` | 
-| Norwegian | `Nb` | 
-| Swedish | `Sv` | 
-| German | `De` | 
-| French | `Fr` | 
+Currently we support 7 languages.
 
+| Language  | short code |
+| --------- | ---------- |
+| Icelandic | `Is`       |
+| English   |  `En`      |
+| Danish    |  `Da`      |
+| Norwegian |  `Nb`      |
+| Swedish   |  `Sv`      |
+| German    |  `De`      |
+| French    |  `Fr`      |
 
 ### Examples code in different languages
 
@@ -325,41 +327,41 @@ public enum SigneeLanguageType
   <TabItem value="nodejs">
 
 ```js
-var axios = require('axios');
+var axios = require("axios");
 var data = JSON.stringify({
-  pdfDocument: 'base64string',
-  pdfFileName: 'example.pdf',
-  flowKey: 'a43412f699dx',
+  pdfDocument: "base64string",
+  pdfFileName: "example.pdf",
+  flowKey: "a43412f699dx",
   meta: {
-    myKey: 'myvalue',
+    myKey: "myvalue",
   },
-  user: 'your@email.is',
+  user: "your@email.is",
   SignInOrder: false,
   RequiresAuth: false,
-  SignatureLocation: 'TopFirstPage',
+  SignatureLocation: "TopFirstPage",
   createSignees: [
     {
-      name: 'Test User',
-      ssn: '1234567890',
-      address: 'Address 5',
-      postalCode: '555',
-      city: 'Reykjavík',
-      email: 'testUser@taktikal.is',
-      phoneNumber: '1234567',
-      communicationDeliveryType: 'none',
+      name: "Test User",
+      ssn: "1234567890",
+      address: "Address 5",
+      postalCode: "555",
+      city: "Reykjavík",
+      email: "testUser@taktikal.is",
+      phoneNumber: "1234567",
+      communicationDeliveryType: "none",
       hidePersonalCode: false,
     },
   ],
 });
 
 var config = {
-  method: 'post',
-  url: 'https://onboardingdev.taktikal.is/api/management/signing',
+  method: "post",
+  url: "https://onboardingdev.taktikal.is/api/management/signing",
   headers: {
-    Accept: 'application/json',
+    Accept: "application/json",
     Authorization:
-      'Basic XmM0ZTdkODZjNzI0OmFwaS0wYjU3OTBjY2EzYjQ0YWU4OTBiOTUwOGRjMDgz',
-    'Content-Type': 'application/json'
+      "Basic XmM0ZTdkODZjNzI0OmFwaS0wYjU3OTBjY2EzYjQ0YWU4OTBiOTUwOGRjMDgz",
+    "Content-Type": "application/json",
   },
   data: data,
 };
@@ -378,12 +380,20 @@ axios(config)
 
 ### Helpful dev values
 
-When working with the `dev` API you can use fake `ssn` to fake a signature. This
-is useful for testing and has no added cost.
+When working with the `dev` API you can use one of our test users to fake a
+signature. This is useful for testing and has no added cost.
 
-### Test signatures
+### Standard Test signatures
+
+<TestStandardSignatures />
+
+### Qualified Test signatures
 
 <TestSignatures />
+
+### Qualified Test signatures from Iceland Registers
+
+<TestSkraSignatures />
 
 ### Signing with test Ssn
 
