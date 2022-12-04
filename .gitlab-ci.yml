@@ -34,6 +34,8 @@ pages:
 scrape:
   stage: scrape
   image: docker:latest
+  services:
+    - docker:dind
   script:
     - mv scraper-config.json .
     - apk add jq
