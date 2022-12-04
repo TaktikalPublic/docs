@@ -12,9 +12,6 @@ test:
     - npm run build
   except:
     - master
-  rules:
-    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
-      when: never
 
 pages:
   stage: deploy
