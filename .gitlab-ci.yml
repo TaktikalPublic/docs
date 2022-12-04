@@ -35,6 +35,7 @@ scrape:
   stage: scrape
   image: docker:latest
   script:
+    - mv scraper-config.json .
     - apk add jq
     - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID "CONFIG=$(cat scraper-config.json | jq -r tostring)" algolia/docsearch-scraper
   rules:
