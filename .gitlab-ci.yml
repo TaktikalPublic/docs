@@ -11,7 +11,7 @@ test:
     - npm install
     - npm run build
   rules:
-    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+    - if: '$SCHEDULER_TAG == "scrape"'
       when: never
     - if: '$CI_COMMIT_REF_NAME == "master" && $SCHEDULER_TAG != "scrape"'
       when: on_success
@@ -26,7 +26,7 @@ pages:
     paths:
       - public
   rules:
-    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+    - if: '$SCHEDULER_TAG == "scrape"'
       when: never
     - if: '$CI_COMMIT_REF_NAME == "master" && $SCHEDULER_TAG != "scrape"'
       when: on_success
@@ -36,7 +36,7 @@ scrape:
   image: docker:latest
   script:
     - apk add jq
-    - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID  "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
+    - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID  "CONFIG=$(cat scraper-config.json | jq -r tostring)" algolia/docsearch-scraper
   rules:
-    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+    - if: '$SCHEDULER_TAG == "scrape"'
       when: on_success
