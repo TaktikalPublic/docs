@@ -36,7 +36,7 @@ scrape:
   image: docker:latest
   script:
     - apk add jq
-    - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID  "CONFIG=$(cat scraper-config.json | jq -r tostring)" algolia/docsearch-scraper
+    - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID "CONFIG=$(cat scraper-config.json | jq -r tostring)" algolia/docsearch-scraper
   rules:
     - if: '$SCHEDULER_TAG == "scrape"'
       when: on_success
