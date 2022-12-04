@@ -10,8 +10,11 @@ test:
   script:
     - npm install
     - npm run build
-  except:
-    - master
+  rules:
+    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+      when: never
+    - if: '$CI_COMMIT_REF_NAME == "master" && $SCHEDULER_TAG != "scrape"'
+      when: on_success
 
 pages:
   stage: deploy
@@ -22,11 +25,11 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - master
   rules:
     - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
       when: never
+    - if: '$CI_COMMIT_REF_NAME == "master" && $SCHEDULER_TAG != "scrape"'
+      when: on_success
 
 scrape:
   stage: scrape
@@ -34,8 +37,6 @@ scrape:
   script:
     - apk add jq
     - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID  "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
-  only:
-    - master
   rules:
     - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
       when: on_success
