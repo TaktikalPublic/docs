@@ -3,6 +3,7 @@ image: node:16.17.1
 stages:
   - test
   - deploy
+  - scrape
 
 test:
   stage: test
@@ -11,6 +12,9 @@ test:
     - npm run build
   except:
     - master
+  rules:
+    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+      when: never
 
 pages:
   stage: deploy
@@ -23,3 +27,18 @@ pages:
       - public
   only:
     - master
+  rules:
+    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+      when: never
+
+scrape:
+  stage: scrape
+  image: docker:latest
+  script:
+    - apk add jq
+    - docker run -i -e API_KEY=$API_KEY APPLICATION_ID=$APPLICATION_ID  "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
+  only:
+    - master
+  rules:
+    - if: '$SCHEDULER_TAG == "scrape"' # variable is set in scheduled job
+      when: on_success
