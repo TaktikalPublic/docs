@@ -149,6 +149,7 @@ settings
 - `signed` is a read only boolean value
 - `languages` optional parameter to set the UI language to one of the supported
   languages in app.taktikal
+- `customSmsText` optional parameter that can be used to send the signee a custom SMS. This can be 200 char long and the signing link will be appended to text.
 
 #### Signee language
 
@@ -261,10 +262,13 @@ public class CreateSignee
 
     public ElectronicSignatureType SignatureType { get; set; } = ElectronicSignatureType.Qualified;
 
-    //The auth0 UserId
+    //The Taktikal User email. This is the owner of this process
     public string User { get; set; }
 
     public SigneeLanguageType Language { get; set; }
+
+    // This can be used if a custom SMS is preferred when using Qualified signatures
+    public string CustomSmsText { get; set; }
 }
 
 public enum CommunicationDeliveryType
@@ -360,7 +364,7 @@ var config = {
   headers: {
     Accept: "application/json",
     Authorization:
-      "Basic XmM0ZTdkODZjNzI0OmFwaS0wYjU3OTBjY2EzYjQ0YWU4OTBiOTUwOGRjMDgz",
+      "Basic XmM0ZTdkODZjNzI0OmFwaS0wYjU3OTBjY2EzYjQ0YWU4OTBiOGRjMDgz",
     "Content-Type": "application/json",
   },
   data: data,
