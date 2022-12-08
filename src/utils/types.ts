@@ -11,6 +11,6 @@ export interface FeatureItem extends BaseItem {
 export type FaqItem = BaseItem;
 
 export interface Link {
-  path: string;
+  path: { is: string; com: string };
   label: string;
 }
