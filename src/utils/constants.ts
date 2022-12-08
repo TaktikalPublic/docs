@@ -73,14 +73,20 @@ export const FAQ_ITEMS: FaqItem[] = [
 export const COMPANY_LINKS: Link[] = [
   {
     label: "Help",
-    path: "https://taktikal.is/help",
+    path: { is: "help", com: "help" },
   },
   {
     label: "About Us",
-    path: "https://taktikal.is/about",
+    path: {
+      is: "um-okkur",
+      com: "about",
+    },
   },
   {
     label: "Contact",
-    path: "https://taktikal.is/contact",
+    path: {
+      is: "hafa-samband",
+      com: "contact",
+    },
   },
 ];
