@@ -2,6 +2,9 @@
 title: "Webhooks"
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 After a document has been signed it can be delivered back to your system.
 
 ## Definition of terms
@@ -21,9 +24,9 @@ object that has an `Id`, `EventData`, and `EventSignature` See example data
 below.
 
 - `EventSignature` is used to validate that Taktikal is the one who sends the
-  data. `TimeStamp` and `GUID` hashed with the `webhookSignatureKey` to create
-  a `Signature`. If the `Signature` that is calculated is not a match to the
-  value in the event, it was not sent by Taktikal.
+  data. `TimeStamp` and `GUID` hashed with the `webhookSignatureKey` to create a
+  `Signature`. If the `Signature` that is calculated is not a match to the value
+  in the event, it was not sent by Taktikal.
 - `EventData` contains all `signee` that signed the document and all their
   personal information provided in this process. The signed document is stored
   as a base64 string in the field `SignedDocument`
@@ -122,11 +125,13 @@ sequenceDiagram
   }
 }
 ```
-
-### C# example
-
-Data transfer objects to accept webhooks from Taktikal and a validation
-function.
+<Tabs
+  defaultValue="csharp"
+  values={[
+    { label: 'C#', value: 'csharp' },
+    { label: 'TypeScript', value: 'ts' },
+  ]}>
+  <TabItem value="csharp">
 
 ```csharp
 using System;
@@ -212,9 +217,10 @@ namespace Webhook
 }
 ```
 
-### JavaScript example (TypeScript)
+</TabItem>
+  <TabItem value="ts">
 
-```jsx
+```ts
 // types
 export interface Payload {
   Id: string;
@@ -263,3 +269,6 @@ export const webhook: Handler = async (req, res) => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>
