@@ -50,6 +50,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   "SignInOrder": false,
   "RequiresAuth": false,
   "SignatureLocation": "TopFirstPage",
+  "flattenDocument": false,
   "createSignees": [
     {
       "name": "Test User",
@@ -98,7 +99,8 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
     "attachments": [],
     "requiresAuth": false,
     "user": "your@email.is",
-    "signInOrder": false
+    "signInOrder": false,
+    "flattenDocument": false
 }
 ```
 
@@ -125,6 +127,8 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   particular signingProcess. The data here can be used to create the document if
   needed, and displayed in emails. All data in `meta` is also delivered in the
   webhook response.
+- `flattenDocument` Default value is `false`. If set to `true` will attempt to
+  flatten pdf document
 - `signees` see below
 
 ### Signee
@@ -149,7 +153,9 @@ settings
 - `signed` is a read only boolean value
 - `languages` optional parameter to set the UI language to one of the supported
   languages in app.taktikal
-- `customSmsText` optional parameter that can be used to send the signee a custom SMS. This can be 200 char long and the signing link will be appended to text.
+- `customSmsText` optional parameter that can be used to send the signee a
+  custom SMS. This can be 200 char long and the signing link will be appended to
+  text.
 
 #### Signee language
 
@@ -191,6 +197,7 @@ var data = new CreateSigningProcess
     FlowKey = "a43412f699dx",
     SignInOrder = false,
     RequiresAuth = false,
+    FlattenDocument = false,
     SignatureLocation = SignatureLocationType.TopFirstPage,
     Meta = new Dictionary<string, string>
     {
@@ -236,6 +243,8 @@ public class CreateSigningProcess
     public List<AttachmentReference> AttachmentReferences { get; set; }
 
     public bool RequiresAuth { get; set; }
+
+    public bool FlattenDocument { get; set; }
 
     public bool SignInOrder { get; set; }
 
@@ -343,6 +352,7 @@ var data = JSON.stringify({
   SignInOrder: false,
   RequiresAuth: false,
   SignatureLocation: "TopFirstPage",
+  flattenDocument: false,
   createSignees: [
     {
       name: "Test User",
