@@ -1,5 +1,5 @@
 ---
-title: 'Settings'
+title: "Introduction"
 ---
 
 Various user and account preferences can be adjusted via the Settings which can

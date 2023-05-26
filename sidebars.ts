@@ -1,5 +1,22 @@
 module.exports = {
-  portal: ["portal/introduction", "portal/settings"],
+  portal: [
+    "portal/introduction",
+    {
+      type: "category",
+      label: "Settings",
+      items: [
+        "portal/settings",
+        {
+          type: "category",
+          label: "Integrations",
+          items: [
+            "portal/integrations/introduction",
+            "portal/integrations/50skills",
+          ],
+        },
+      ],
+    },
+  ],
   "fill-and-sign": [
     "fill-and-sign/introduction",
     "fill-and-sign/creating-your-first-document",
