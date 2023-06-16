@@ -51,6 +51,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   "RequiresAuth": false,
   "SignatureLocation": "TopFirstPage",
   "flattenDocument": false,
+  "reminderRule": "1:3",
   "createSignees": [
     {
       "name": "Test User",
@@ -129,6 +130,12 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   webhook response.
 - `flattenDocument` Default value is `false`. If set to `true` will attempt to
   flatten pdf document
+- `reminderRule` Sends reminders, leave empty or null for no reminders. The format should be 
+   "{DAYS_AFTER_INITIAL_REMINDER}:{DAYS_BETWEEN_RECURRING_REMINDERS}". e.g. "1:3" will send one reminder
+    after 1 day and then every three days after that.
+    Valid values will be for first reminder to be sent between 0-30 days (0 means no reminder) 
+    and then send every 0-15 days. 0, again, meaning no reminders. 
+    f.e 0:10 would only send reminders every 10 days and 5:0 would only send one reminder after 5 days
 - `signees` see below
 
 ### Signee
@@ -198,6 +205,7 @@ var data = new CreateSigningProcess
     SignInOrder = false,
     RequiresAuth = false,
     FlattenDocument = false,
+    ReminderRule = "5:0",
     SignatureLocation = SignatureLocationType.TopFirstPage,
     Meta = new Dictionary<string, string>
     {
@@ -245,6 +253,8 @@ public class CreateSigningProcess
     public bool RequiresAuth { get; set; }
 
     public bool FlattenDocument { get; set; }
+
+    public string ReminderRule { get; set; }
 
     public bool SignInOrder { get; set; }
 
@@ -353,6 +363,7 @@ var data = JSON.stringify({
   RequiresAuth: false,
   SignatureLocation: "TopFirstPage",
   flattenDocument: false,
+  reminderRule: "10:3",
   createSignees: [
     {
       name: "Test User",
