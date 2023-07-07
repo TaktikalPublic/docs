@@ -126,47 +126,50 @@ Content-Type: application/json
 <TabItem value="nodejs">
 
 ```ts
-const request = require("request");
+const axios = require("axios");
 
-const start = {
-  method: 'POST',
-  url: 'https://onboardingdev.taktikal.is/api/auth/start',
-  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-  body: {
-    PhoneNumber: '8433600',
-    FlowKey: '54ab65385c5b',
-    AuthenticationContextType: 'Sim'
-  },
-  json: true
+const flowKey = "c3782acb4a93";
+
+const start = async () => {
+  const { data } = await axios.post(
+    "https://onboardingdev.taktikal.is/api/auth/start",
+    {
+      phoneNumber: "6991485",
+      flowKey,
+      authenticationContextType: "Sim"
+    }
+  );
+
+  return data;
 };
 
-request(start, async function (error, response, body) {
-  if (error) throw new Error(error);
+const poll = async (authRequestId) => {
+  const { data } = await axios.post(
+    "https://onboardingdev.taktikal.is/api/auth/poll",
+    {
+      authRequestId,
+      flowKey,
+      lookupType: "Name"
+    }
+  );
 
-  const poll = {
-    method: 'POST',
-    url: 'https://onboardingdev.taktikal.is/api/auth/poll',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: {
-      authRequestId: body.authRequestId,
-      LookupType: 'Name'
-    },
-    json: true
-  };
+  return data;
+};
+
+const startAndPollAuthentication = async () => {
+  const { authRequestId } = await start();
 
   while (true) {
-    await new Promise(r => setTimeout(r, 2000));
-
-    request(poll, function (error, response, body) {
-      if (error) throw new Error(error);
-
-      if (!body.waitingForUserInput) {
-        console.log(body.customer);
-        process.exit(0);
-      }
-    });
+    await new Promise((r) => setTimeout(r, 2000));
+    const { customer, waitingForUserInput } = await poll(authRequestId);
+    if (!waitingForUserInput) {
+      console.log(customer);
+      process.exit(0);
+    }
   }
-});
+};
+
+startAndPollAuthentication();
 ```
 
 </TabItem>
