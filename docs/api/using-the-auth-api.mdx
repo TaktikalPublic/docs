@@ -16,7 +16,7 @@ The `/auth/start` request returns a json object that needs to be used for the se
 ```json
 ## Request for authentication via e-sim
 
-POST /api/auth HTTP/1.1
+POST /api/auth/start HTTP/1.1
 Host: onboardingdev.taktikal.is
 Accept: application/json
 Content-Type: application/json
@@ -69,17 +69,6 @@ There are three different return types depending on the `LookupType`
 ## Request for polling
 
 POST /api/auth/poll HTTP/1.1
-Host: onboardingdev.taktikal.is
-Accept: application/json
-Content-Type: application/json
-{
-  "PhoneNumber": "8433600",
-  "FlowKey": "54ab65385c5b",
-  "AuthenticationContextType": "Sim"
-}
-
-
-POST /api/auth HTTP/1.1
 Host: onboardingdev.taktikal.is
 Accept: application/json
 Content-Type: application/json
