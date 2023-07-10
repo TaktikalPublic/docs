@@ -21,8 +21,8 @@ Host: onboardingdev.taktikal.is
 Accept: application/json
 Content-Type: application/json
 {
-  "PhoneNumber": "8433600",
-  "FlowKey": "54ab65385c5b",
+  "PhoneNumber": "1234567",
+  "FlowKey": "abc123abc123",
   "AuthenticationContextType": "Sim"
 }
 
@@ -34,7 +34,7 @@ Accept: application/json
 Content-Type: application/json
 {
   "Ssn": "1234567890",
-  "FlowKey": "54ab65385c5b",
+  "FlowKey": "abc123abc123",
   "AuthenticationContextType": "App"
 }
 
@@ -74,7 +74,7 @@ Accept: application/json
 Content-Type: application/json
 {
   "authRequestId": "1-147rag342352345",
-  "FlowKey": "54ab65385c5b",
+  "FlowKey": "abc123abc123",
   "LookupType": "NameAddressFamily"
 }
 
@@ -85,12 +85,12 @@ Content-Type: application/json
   "customer": {
       "name": "Test User",
       "ssn": "1234567890",
-      "phoneNumber": "8433600",
+      "phoneNumber": "1234567",
       "address": "Address 5",
       "postalCode": "555",
       "city": "Reykjavík",
       "token": "f19b032a237e4fbc94f3",
-      "flowKey": "98ab35315c5b",
+      "flowKey": "abc123abc123",
       "meta": {
           "ParnerSsn": "1231231245",
           "FamilyNumber": "1234567890",
@@ -117,13 +117,13 @@ Content-Type: application/json
 ```ts
 const axios = require("axios");
 
-const flowKey = "c3782acb4a93";
+const flowKey = "abc123abc123";
 
 const start = async () => {
   const { data } = await axios.post(
     "https://onboardingdev.taktikal.is/api/auth/start",
     {
-      phoneNumber: "6991485",
+      phoneNumber: "1234567",
       flowKey,
       authenticationContextType: "Sim"
     }
@@ -168,8 +168,8 @@ startAndPollAuthentication();
 var httpClient = new System.Net.Http.HttpClient();
 var resp = await httpClient.PostAsJsonAsync("https://onboardingdev.taktikal.is/api/auth/start", new
 {
-    FlowKey = "54ab65385c5b",
-    PhoneNumber = "8433600",
+    FlowKey = "abc123abc123",
+    PhoneNumber = "1234567",
     AuthenticationContextType = AuthenticationContextType.Sim // or just "Sim" if you don't want to use an enum
 });
 
@@ -179,7 +179,7 @@ while (true)
     await Task.Delay(2000);
     var pollResponse = await httpClient.PostAsJsonAsync("https://onboardingdev.taktikal.is/api/auth/poll", new
     {
-        FlowKey = "54ab65385c5b",
+        FlowKey = "abc123abc123",
         AuthRequestId = startAuthResponse.AuthRequestId,
         LookupType = LookupType.NameAddressFamily // or just "NameAddressFamily" if you don't want to use an enum
     });
@@ -243,8 +243,8 @@ $request->setHeaders(array(
 ));
 
 $request->setBody('{
-  "PhoneNumber": "8433600",
-  "FlowKey": "54ab65385c5b",
+  "PhoneNumber": "1234567",
+  "FlowKey": "abc123abc123",
   "AuthenticationContextType": "Sim"
 }');
 
@@ -255,7 +255,7 @@ try {
     sleep(2)
     $request->setBody('{
         "AuthRequestId": startAuthResponse.authRequestId,
-        "FlowKey": "54ab65385c5b",
+        "FlowKey": "abc123abc123",
         "LookupType": "NameAddressFamily"
     }');
     $response = $request->send();
@@ -289,8 +289,8 @@ Host: onboardingdev.taktikal.is
 Accept: application/json
 Content-Type: application/json
 {
-  "PhoneNumber": "8433600",
-  "FlowKey": "54ab65385c5b",
+  "PhoneNumber": "1234567",
+  "FlowKey": "abc123abc123",
   "LookupType": "NameAddressFamily"
 }
 
@@ -298,12 +298,12 @@ Content-Type: application/json
 {
     "name": "Test User",
     "ssn": "1234567890",
-    "phoneNumber": "8433600",
+    "phoneNumber": "1234567",
     "address": "Address 5",
     "postalCode": "555",
     "city": "Reykjavík",
     "token": "f19b032a237e4fbc94f3",
-    "flowKey": "98ab35315c5b",
+    "flowKey": "abc123abc123",
     "meta": {
         "ParnerSsn": "1231231245",
         "FamilyNumber": "1234567890",
