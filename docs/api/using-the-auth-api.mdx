@@ -5,9 +5,49 @@ title: 'Using the Auth API'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A single `POST` request is needed to authenticate a user.
+Two `POST` requests are needed to authenticate a user:
+* First call `/auth/start` to start the authentication process
+* Then every two seconds call `/auth/poll` to check whether the user has authenticated
 
-The `/auth` request returns a `Customer` object but with different amount of
+The `/auth/start` request returns a json object that needs to be used for the second post request to `/auth/poll`
+
+### Example request to authenticate a person
+
+```json
+## Request for authentication via e-sim
+
+POST /api/auth/start HTTP/1.1
+Host: onboardingdev.taktikal.is
+Accept: application/json
+Content-Type: application/json
+{
+  "PhoneNumber": "8433600",
+  "FlowKey": "54ab65385c5b",
+  "AuthenticationContextType": "Sim"
+}
+
+## Request for authentication via app
+
+POST /api/auth/start HTTP/1.1
+Host: onboardingdev.taktikal.is
+Accept: application/json
+Content-Type: application/json
+{
+  "Ssn": "1234567890",
+  "FlowKey": "54ab65385c5b",
+  "AuthenticationContextType": "App"
+}
+
+## Response
+{
+  "authRequestId": "1-147rag342352345",
+  "verificationCode": "1234"
+}
+```
+
+The response will include the `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. And `authRequestId` which you will need to send every two seconds to `/auth/poll` until user logs in or request times out (180 seconds).
+
+The `/auth/poll` request returns a `Customer` object but with different amount of
 information filled out depending on the `LookupType`. If
 `LookupType.NameAddressFamily` is selected then the extra values returned will
 be returned in `Meta`
@@ -22,12 +62,229 @@ There are three different return types depending on the `LookupType`
 3. `NameAddressFamily`: Returns Name, SSN, Address data, gender code, and family
    information. _Note: Family lookup requires special permission_.
 
+
+### Example request to poll authentication status of user
+
+```json
+## Request for polling
+
+POST /api/auth/poll HTTP/1.1
+Host: onboardingdev.taktikal.is
+Accept: application/json
+Content-Type: application/json
+{
+  "authRequestId": "1-147rag342352345",
+  "FlowKey": "54ab65385c5b",
+  "LookupType": "NameAddressFamily"
+}
+
+## Response
+{
+  "waitingForUserInput": false, //true if still waiting for user to authenticate
+  "statusMessage": "ok",
+  "customer": {
+      "name": "Test User",
+      "ssn": "1234567890",
+      "phoneNumber": "8433600",
+      "address": "Address 5",
+      "postalCode": "555",
+      "city": "Reykjavík",
+      "token": "f19b032a237e4fbc94f3",
+      "flowKey": "98ab35315c5b",
+      "meta": {
+          "ParnerSsn": "1231231245",
+          "FamilyNumber": "1234567890",
+          "GenderCode": "1",
+          "FamilyStatus": "3"
+      }
+  }
+}
+```
+
+### Examples code in different languages
+
+<Tabs
+  defaultValue="nodejs"
+  values={[
+    { label: 'Node.js', value: 'nodejs' },
+    { label: 'C#', value: 'csharp' },
+    { label: 'PHP', value: 'php' }
+  ]}
+>
+
+<TabItem value="nodejs">
+
+```ts
+const axios = require("axios");
+
+const flowKey = "c3782acb4a93";
+
+const start = async () => {
+  const { data } = await axios.post(
+    "https://onboardingdev.taktikal.is/api/auth/start",
+    {
+      phoneNumber: "6991485",
+      flowKey,
+      authenticationContextType: "Sim"
+    }
+  );
+
+  return data;
+};
+
+const poll = async (authRequestId) => {
+  const { data } = await axios.post(
+    "https://onboardingdev.taktikal.is/api/auth/poll",
+    {
+      authRequestId,
+      flowKey,
+      lookupType: "Name"
+    }
+  );
+
+  return data;
+};
+
+const startAndPollAuthentication = async () => {
+  const { authRequestId } = await start();
+
+  while (true) {
+    await new Promise((r) => setTimeout(r, 2000));
+    const { customer, waitingForUserInput } = await poll(authRequestId);
+    if (!waitingForUserInput) {
+      console.log(customer);
+      process.exit(0);
+    }
+  }
+};
+
+startAndPollAuthentication();
+```
+
+</TabItem>
+<TabItem value="csharp">
+
+```csharp
+var httpClient = new System.Net.Http.HttpClient();
+var resp = await httpClient.PostAsJsonAsync("https://onboardingdev.taktikal.is/api/auth/start", new
+{
+    FlowKey = "54ab65385c5b",
+    PhoneNumber = "8433600",
+    AuthenticationContextType = AuthenticationContextType.Sim // or just "Sim" if you don't want to use an enum
+});
+
+var startAuthResponse = await resp.Content.ReadFromJsonAsync<StartAuthResponse>();
+while (true)
+{
+    await Task.Delay(2000);
+    var pollResponse = await httpClient.PostAsJsonAsync("https://onboardingdev.taktikal.is/api/auth/poll", new
+    {
+        FlowKey = "54ab65385c5b",
+        AuthRequestId = startAuthResponse.AuthRequestId,
+        LookupType = LookupType.NameAddressFamily // or just "NameAddressFamily" if you don't want to use an enum
+    });
+
+    if (pollResponse.IsErrorResponse())
+    {
+        // log error
+        break;
+    }
+
+    var parsedResponse = await pollResponse.Content.ReadFromJsonAsync<PollCustomer>();
+    if (!parsedResponse.WaitingForUserInput)
+    {
+        // access customer object here parsedResponse.Customer
+        break;
+    }
+}
+
+public class StartAuthResponse
+{
+    public string AuthRequestId { get; set; }
+    public string VerificationCode { get; set; }
+}
+
+public class PollCustomer
+{
+    public Customer Customer { get; set; }
+    public string StatusMessage { get; set; }
+    public bool WaitingForUserInput { get; set; } = false;
+}
+
+public class Customer
+{
+    public string Name { get; set; }
+    public string Ssn { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
+    public string Address { get; set; }
+    public string PostalCode { get; set; }
+    public string City { get; set; }
+    public string Token { get; set; }
+    public string FlowKey { get; set; }
+    public Dictionary<string,string> Meta { get; set; }
+}
+```
+
+</TabItem>
+<TabItem value="php">
+
+```php
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://onboardingdev.taktikal.is/api/auth/start');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'Host' => 'onboardingdev.taktikal.is',
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+));
+
+$request->setBody('{
+  "PhoneNumber": "8433600",
+  "FlowKey": "54ab65385c5b",
+  "AuthenticationContextType": "Sim"
+}');
+
+try {
+  $response = $request->send();
+  $startAuthResponse = $response->getBody();
+  while(true) {
+    sleep(2)
+    $request->setBody('{
+        "AuthRequestId": startAuthResponse.authRequestId,
+        "FlowKey": "54ab65385c5b",
+        "LookupType": "NameAddressFamily"
+    }');
+    $response = $request->send();
+    $pollResponse = $response->getBody();
+    if(!$pollResponse.waitingForUserInput) {
+        echo $pollResponse
+        break;
+    }
+  }
+} catch (HttpException $ex) {
+  echo $ex;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Errors
+
+The endpoint `/auth/poll` will return a 403 response if user is not authenticated and we are no longer waiting for him and the body will contain the reason why
+
+## Old method
+
 ### Example request to authenticate a person
 
 ```json
 ## Request
 
-POST /api/Auth HTTP/1.1
+POST /api/auth HTTP/1.1
 Host: onboardingdev.taktikal.is
 Accept: application/json
 Content-Type: application/json
@@ -55,82 +312,3 @@ Content-Type: application/json
     }
 }
 ```
-
-### Examples code in different languages
-
-<Tabs 
-  defaultValue="php"
-  values={[
-    { label: 'PHP', value: 'php' },
-    { label: 'Node.js', value: 'nodejs' },
-    { label: 'C#', value: 'csharp' }
-  ]}
->
-  <TabItem value="php">
-
-```php
-<?php
-
-$request = new HttpRequest();
-$request->setUrl('https://onboardingdev.taktikal.is/api/Auth');
-$request->setMethod(HTTP_METH_POST);
-
-$request->setHeaders(array(
-  'Host' => 'onboardingdev.taktikal.is',
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json'
-));
-
-$request->setBody('{
-  "PhoneNumber": "8433600",
-  "FlowKey": "54ab65385c5b",
-  "LookupType": "Name"
-}');
-
-try {
-  $response = $request->send();
-
-  echo $response->getBody();
-} catch (HttpException $ex) {
-  echo $ex;
-}
-```
-
-</TabItem>
-  <TabItem value="nodejs">
-
-```jsx
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://onboardingdev.taktikal.is/api/Auth',
-  headers:
-   { Content-Type: 'application/json',
-     Accept: 'application/json' },
-  body:
-   { PhoneNumber: '8433600',
-     FlowKey: '54ab65385c5b',
-     LookupType: 'Name' },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-  </TabItem>
-    <TabItem value="csharp">
-
-```csharp
-var client = new RestClient("https://onboardingdev.taktikal.is/api/Auth");
-var request = new RestRequest(Method.POST);
-request.AddHeader("Content-Type", "application/json");
-request.AddHeader("Accept", "application/json");
-request.AddParameter("undefined", "{\r\n  \"PhoneNumber\": \"8433600\",\r\n  \"FlowKey\": \"54ab65385c5b\",\r\n  \"LookupType\": \"Name\"\r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-  </TabItem>
-</Tabs>
