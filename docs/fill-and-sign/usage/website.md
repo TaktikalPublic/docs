@@ -55,17 +55,12 @@ element.
 </button>
 ```
 
-You can see how the initial data should be provided to fields in the
-[`initialData`](#initialData) section.
-
 ## Language
 
 Add `data-language` to the button to set the language.
 
 ```html
-<button data-filekey="{{fileKey}}" data-language="en-us">
-  Open
-</button>
+<button data-filekey="{{fileKey}}" data-language="en-us">Open</button>
 ```
 
 The supported languages are `is` and `en-us`.
