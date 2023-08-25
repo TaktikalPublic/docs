@@ -54,6 +54,22 @@ Taktikal sents out webhook events for `Created`, `SignedDocument`, `AllSigned`,
 Webhooks can be managed via the API. All routes can be viewed in Swagger
 [here](https://onboarding.taktikal.is/api/swagger-ui/#/webhook).
 
+
+## AttachmentReferences
+A signing process can have AttachmentReferences. Each AttachmentReference has `AttachmentType`. That can be any of the values in the table
+
+| AttachmentType | Value | Description |
+| --- | --- | --- |
+| Unspecified | 0 | this is the most common value. It's used for all regular attachments. |
+| EvidencePage | 10 | for standart signatures and advanced signatures, an EvidencePage is generated and seald by Taktikal |
+| PepPdf | 20 | a PDF file contaning PEP and sactions results for a signee in an AML process that is seald by Taktikal | 
+| PepJson | 30 | a JSON file contaning PEP and sactions results for a signee in an AML process |
+| Verification | 40 | for advanced signatures all attachments related to identify the signee have this attachment type. |
+| XmlForSealing | 50 | an xml attachment that is selead and added as an embedded attachment to the PDF when it's signed |
+| VerificationMedia | 60 | images that are collected during the ID verification process | 
+| CompanyInfo | 70 | Company report used in AML processes. compare the answeres to the official company data from the goverment | 
+
+
 ## Recommended approach
 
 When you receive a webhook event, we recommend that you offload it to your own
@@ -86,7 +102,7 @@ sequenceDiagram
         "Name": "Test User",
         "Ssn": "1234567890",
         "PhoneNumber": "1234567",
-        "Email": "testUser@taktikal.is",
+        "Email": "testUser@taktikal.com",
         "Address": "Address 5",
         "City": "Reykjavík",
         "Key": "si7abef56540bd49f9a9b8a33969a9cf8c",
@@ -99,20 +115,16 @@ sequenceDiagram
     "FlowKey": "722989cac3fx",
     "FlowName": "Non-disclosure agreement",
     "SignedDocument": "JVBERi0xLjQ...",
-    "Attachments": [
-      {
-        "FileName": "Document.Docx",
-        "FileContent": "JVBERi0x..."
-      }
-    ],
     "AttachmentReferences": [
       {
-        "Id": "at73bb",
-        "FileName": "logo_4x.png",
-        "ContentLength": 9376,
-        "ContentType": "image/png",
-        "Url": "https://app.taktikal.is/attachment/sp231f52f87d6f4caaa2e29ecac92d055b/at73bb/logo_4x.png",
-        "Description": "Description goes here",
+        "Id": "at3357",
+        "FileName": "pep-Test User-63f-1.pdf",
+        "ContentLength": 90570,
+        "ContentType": "application/pdf",
+        "Url": "https://app.taktikal.is/attachment/sp231f52f87d6f4caaa2e29ecac92d055b/at3357/pep-Test User-64f-1.pdf",
+        "Description": "PEP for Test User",
+        "ProcessKey": "sp231f52f87d6f4caaa2e29ecac92d055b",
+        "AttachmentType": 20,
         "SigneeKey": "si7abef56540bd49f9a9b8a33969a9cf8c"
       }
     ],
