@@ -179,24 +179,52 @@ namespace Webhook
     {
         public List<Signee> Signees { get; set; }
         public string SignedDocument { get; set; }
-        public List<SigningAttachment> Attachments { get; set; }
+        public List<AttachmentReference> AttachmentReferences { get; set; }
         public EventType EventType { get; set; }
         public Dictionary<string, string> Meta { get; set; }
     }
 
-    public class SigningAttachment
+    public class AttachmentReference
     {
+        public string Id { get; set; }
         public string FileName { get; set; }
+        public long ContentLength { get; set; }
+        public string ContentType { get; set; }
+        public string Url { get; set; }
+        public string Description { get; set; }
+        public string ProcessKey { get; set; }
 
-        /// <summary>
-        /// FileContent is stored as base64 string
-        /// </summary>
-        public string FileContent { get; set; }
+        public AttachmentType AttachmentType { get; set; } = AttachmentType.Unspecified;
+        public string SigneeKey { get; set; }
+    }
+
+    public enum AttachmentType
+    {
+        Unspecified = 0,
+        EvidencePage = 10,
+        PepPdf = 20,
+        PepJson = 30,
+        Verification = 40,
+        XmlForSealing = 50,
+        VerificationMedia = 60, // additional data collected during verification
+        CompanyInfo = 70
     }
 
     public enum EventType
     {
-        AllSigned
+        SignedDocument = 1,
+        AllSigned = 2,
+        Canceled = 5,
+        Expired = 6,
+        /// <summary>
+        /// This is an event that is triggered when all jobs have finished running for a process
+        /// </summary>
+        Completed = 10,
+
+        /// <summary>
+        /// This is an event that is triggered when a process is created to trigger all signingRequests
+        /// </summary>
+        Created = 11
     }
 
     public class Signee
