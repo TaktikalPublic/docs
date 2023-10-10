@@ -8,7 +8,7 @@ Customer initiated Smart Forms are forms that can be embedded into a website via
 `iframe`.
 
 See
-[iframe FAQ](http://localhost:3000/docs/api/signing-page-iframe#what-size-should-i-give-the-iframe/docs/api/signing-page-iframe#what-size-should-i-give-the-iframe)
+[iframe FAQ](/docs/api/signing-page-iframe#what-size-should-i-give-the-iframe/docs/api/signing-page-iframe#what-size-should-i-give-the-iframe)
 
 Example:
 
