@@ -54,21 +54,21 @@ Taktikal sents out webhook events for `Created`, `SignedDocument`, `AllSigned`,
 Webhooks can be managed via the API. All routes can be viewed in Swagger
 [here](https://onboarding.taktikal.is/api/swagger-ui/#/webhook).
 
-
 ## AttachmentReferences
-A signing process can have AttachmentReferences. Each AttachmentReference has `AttachmentType`. That can be any of the values in the table
 
-| AttachmentType | Value | Description |
-| --- | --- | --- |
-| Unspecified | 0 | this is the most common value. It's used for all regular attachments. |
-| EvidencePage | 10 | for standart signatures and advanced signatures, an EvidencePage is generated and seald by Taktikal |
-| PepPdf | 20 | a PDF file contaning PEP and sactions results for a signee in an AML process that is seald by Taktikal | 
-| PepJson | 30 | a JSON file contaning PEP and sactions results for a signee in an AML process |
-| Verification | 40 | for advanced signatures all attachments related to identify the signee have this attachment type. |
-| XmlForSealing | 50 | an xml attachment that is selead and added as an embedded attachment to the PDF when it's signed |
-| VerificationMedia | 60 | images that are collected during the ID verification process | 
-| CompanyInfo | 70 | Company report used in AML processes. compare the answeres to the official company data from the goverment | 
+A signing process can have AttachmentReferences. Each AttachmentReference has
+`AttachmentType`. That can be any of the values in the table
 
+| AttachmentType     | Value | Description                                                                                                |
+| ------------------ | ----- | ---------------------------------------------------------------------------------------------------------- |
+| Unspecified        | 0     | this is the most common value. It's used for all regular attachments.                                      |
+| EvidencePage       |  10   | for standart signatures and advanced signatures, an EvidencePage is generated and seald by Taktikal        |
+| PepPdf             |  20   | a PDF file contaning PEP and sactions results for a signee in an AML process that is seald by Taktikal     |
+| PepJson            | 30    | a JSON file contaning PEP and sactions results for a signee in an AML process                              |
+| Verification       | 40    |  for advanced signatures all attachments related to identify the signee have this attachment type.         |
+| XmlForSealing      |  50   | an xml attachment that is selead and added as an embedded attachment to the PDF when it's signed           |
+|  VerificationMedia |  60   |  images that are collected during the ID verification process                                              |
+| CompanyInfo        |  70   | Company report used in AML processes. compare the answeres to the official company data from the goverment |
 
 ## Recommended approach
 
@@ -263,56 +263,43 @@ namespace Webhook
 ```
 
 </TabItem>
-  <TabItem value="ts">
+<TabItem>
 
-```ts
-// types
-export interface Payload {
-  Id: string;
-  EventData: {
-    Signees: Signee[];
-    FlowKey: string;
-    FlowName: string;
-    SignedDocument: string;
-    Attachments: any[];
-    EventType: number;
-    Meta: {
-      pdfFieldData: string;
-    };
-  };
-  EventSignature: {
-    TimeStamp: number;
-    Guid: string;
-    Signature: string;
-  };
+```tsx
+import crypto from "crypto";
+
+interface IEventSignature {
+  TimeStamp: string;
+  Guid: string;
+  Signature: string;
 }
 
-export interface Signee {
-  Name: string;
-  Ssn: string;
-  PhoneNumber: string;
-  Email: string;
-  Address: null;
-  PostalCode: null;
-  City: null;
-  Key: string;
-  Signed: boolean;
-  ProcessKey: string;
-  CommunicationDeliveryType: number;
-}
+const validateSignature = (options: {
+  signaturePayload: IEventSignature;
+  webhookSignatureKey: string;
+}) => {
+  const { signaturePayload, webhookSignatureKey } = options;
 
-// request handler
-export const webhook: Handler = async (req, res) => {
-  try {
-    const { EventData } = req.body as Payload;
-    // save the data
-    res.status(200).json({ message: "OK" });
-    return;
-  } catch (e) {
-    res.status(400).json({ message: "error" });
-    return;
-  }
+  const keyByte = Buffer.from(webhookSignatureKey, "utf8");
+  const messageBytes = Buffer.from(
+    `${signaturePayload.TimeStamp}${signaturePayload.Guid}`,
+    "utf8"
+  );
+
+  const hmacSha256 = crypto.createHmac("sha256", keyByte);
+  const hashMessage = hmacSha256.update(messageBytes).digest("base64");
+
+  return hashMessage === signaturePayload.Signature;
 };
+
+const validSignature = validateSignature({
+  signaturePayload: {
+    TimeStamp: "638327870864528186",
+    Guid: "4071a0c4-e8c9-432c-8031-7d86ca217b12",
+    Signature: "NOUtCpHdAyQte6LDcNws4U4qw2vQVhrS4s8YX8=",
+  },
+  webhookSignatureKey: <TAKTIKAL_WEBHOOK_SIGNATURE_KEY>,
+});
 ```
 
 </TabItem>
