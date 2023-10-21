@@ -65,7 +65,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
       "SignatureType": "Qualified", // Can be Qualified or Simple
       "hidePersonalCode": false, // ssn will be hidden in the signature appearance if true
       "Reason": "Undirritun",
-      "Language": "En" // optional parameter
+      "Language": "En-Us" // optional parameter
     }
   ]
 }
@@ -173,7 +173,7 @@ Currently we support 7 languages.
 | Language  | short code |
 | --------- | ---------- |
 | Icelandic |  `Is`      |
-| English   |  `En`      |
+| English   |  `En-Us`   |
 | Danish    |  `Da`      |
 | Norwegian |  `Nb`      |
 | Swedish   |  `Sv`      |
@@ -225,7 +225,7 @@ var data = new CreateSigningProcess
             Reason = "buyer",
             HidePersonalCode = false,
             SignatureType = ElectronicSignatureType.Qualified,
-            Language = SigneeLanguageType.En
+            Language = SigneeLanguageType.EnUs
         }
     }
 };
@@ -324,7 +324,7 @@ public enum SigneeLanguageType
     /// <summary>
     /// US English
     /// </summary>
-    En,
+    En-Us,
     /// <summary>
     /// Norwegian Bokmål
     /// </summary>
