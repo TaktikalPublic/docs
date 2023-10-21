@@ -65,7 +65,7 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
       "SignatureType": "Qualified", // Can be Qualified or Simple
       "hidePersonalCode": false, // ssn will be hidden in the signature appearance if true
       "Reason": "Undirritun",
-      "Language": "En-Us" // optional parameter
+      "Language": "En" // optional parameter
     }
   ]
 }
@@ -172,8 +172,8 @@ Currently we support 7 languages.
 
 | Language  | short code |
 | --------- | ---------- |
-| Icelandic | `Is`       |
-| English   |  `En-Us`   |
+| Icelandic |  `Is`      |
+| English   |  `En`      |
 | Danish    |  `Da`      |
 | Norwegian |  `Nb`      |
 | Swedish   |  `Sv`      |
@@ -324,7 +324,7 @@ public enum SigneeLanguageType
     /// <summary>
     /// US English
     /// </summary>
-    En-Us,
+    En,
     /// <summary>
     /// Norwegian Bokmål
     /// </summary>
