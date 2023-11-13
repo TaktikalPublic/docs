@@ -41,11 +41,11 @@ received that marks that we will not try again.
 Taktikal sents out webhook events for `Created`, `SignedDocument`, `AllSigned`,
 `Canceled` or `Expired`,
 
-| Event name       |  Event description                                                                                 | contains document  | integer value |
+| Event name       |  Event description                                                                                 | contains document  | integer value |
 | ---------------- | -------------------------------------------------------------------------------------------------- | ------------------ | ------------- |
-| `Created`        |  This is an event that is triggerd when a new signing process is created.                          | :red_circle:       |  11           |
-| `SignedDocument` |  This is an event that is run for each signing except the last one.                                | :red_circle:       |  1            |
-|  `AllSigned`     |   This is an event triggered on the last signature.                                                | :white_check_mark: |  2            |
+| `Created`        | This is an event that is triggerd when a new signing process is created.                           | :red_circle:       | 11            |
+| `SignedDocument` | This is an event that is run for each signing except the last one.                                 | :red_circle:       | 1             |
+| `AllSigned`      | This is an event triggered on the last signature.                                                  | :white_check_mark: | 2             |
 | `Canceled`       | This is an event that is run when a signing process is canceled.                                   | :red_circle:       | 5             |
 | `Expired`        | each signing process needs to be signed within 30 days. If it expires this event will be triggered | :white_check_mark: | 6             |
 
@@ -62,13 +62,13 @@ A signing process can have AttachmentReferences. Each AttachmentReference has
 | AttachmentType     | Value | Description                                                                                                |
 | ------------------ | ----- | ---------------------------------------------------------------------------------------------------------- |
 | Unspecified        | 0     | this is the most common value. It's used for all regular attachments.                                      |
-| EvidencePage       |  10   | for standart signatures and advanced signatures, an EvidencePage is generated and seald by Taktikal        |
-| PepPdf             |  20   | a PDF file contaning PEP and sactions results for a signee in an AML process that is seald by Taktikal     |
+| EvidencePage       | 10    | for standart signatures and advanced signatures, an EvidencePage is generated and seald by Taktikal        |
+| PepPdf             | 20    | a PDF file contaning PEP and sactions results for a signee in an AML process that is seald by Taktikal     |
 | PepJson            | 30    | a JSON file contaning PEP and sactions results for a signee in an AML process                              |
-| Verification       | 40    |  for advanced signatures all attachments related to identify the signee have this attachment type.         |
-| XmlForSealing      |  50   | an xml attachment that is selead and added as an embedded attachment to the PDF when it's signed           |
-|  VerificationMedia |  60   |  images that are collected during the ID verification process                                              |
-| CompanyInfo        |  70   | Company report used in AML processes. compare the answeres to the official company data from the goverment |
+| Verification       | 40    | for advanced signatures all attachments related to identify the signee have this attachment type.         |
+| XmlForSealing      | 50    | an xml attachment that is selead and added as an embedded attachment to the PDF when it's signed           |
+| VerificationMedia  | 60    | images that are collected during the ID verification process                                              |
+| CompanyInfo        | 70    | Company report used in AML processes. compare the answeres to the official company data from the goverment |
 
 ## Recommended approach
 
@@ -263,7 +263,7 @@ namespace Webhook
 ```
 
 </TabItem>
-<TabItem>
+<TabItem value="ts">
 
 ```tsx
 import crypto from "crypto";
