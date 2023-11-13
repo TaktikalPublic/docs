@@ -17,10 +17,10 @@ The following email template types are available `Signup`, `Notification`,
 
 | Template type   |  Description                                                              | When                                             | Address to use in `To` field |
 | --------------- | ------------------------------------------------------------------------- | ------------------------------------------------ | ---------------------------- |
-| `Signup`        | Sent to the customer requesting his signature                             | When a signing process or sequence is created    | {{customer.email}}           |
+| `Signup`        | Sent to the customer requesting his signature                             | When a signing process or sequence is created    | \{\{customer.email\}\}           |
 |  `Notification` | Sent to the company                                                       | When a signing process or sequence has completed | someemail@yourcompany.com    |
-| `Confirmation`  | Sent to the customer                                                      | When a signing process or sequence has completed | {{customer.email}}           |
-| `SalesPerson`   | Sent to your company user that sent the signature request to the customer | When a signing process or sequence has completed | {{salesPerson}}              |
+| `Confirmation`  | Sent to the customer                                                      | When a signing process or sequence has completed | \{\{customer.email\}\}           |
+| `SalesPerson`   | Sent to your company user that sent the signature request to the customer | When a signing process or sequence has completed | \{\{salesPerson\}\}              |
 
 ## Register an email template
 
@@ -52,18 +52,18 @@ The following values are available for use in the message
 
 | Handle                        |  Description                                                  |
 | ----------------------------- | ------------------------------------------------------------- |
-| {{customer.address}}          | The customers address \*                                      |
-| {{customer.city}}             | The customers city \*                                         |
-| {{customer.email}}            | The customers email \*                                        |
-| {{customer.name}}             | The customers name \*                                         |
-| {{customer.phoneNumber}}      | The customers phone number \*                                 |
-| {{customer.postalCode}}       | The customers postal code \*                                  |
-| {{customer.ssn}}              | The customers social security number \*                       |
-| {{customer.Meta.pdfFileName}} | The name of the file to be signed                             |
-| {{salesPerson}}               | The email of the company user that sent the signature request |
-| {{companyName}}               | The name of your company                                      |
-| {{companySsn}}                | The social security number of your company \*                 |
-| {{flowName}}                  | The name of the flow                                          |
-| {{customer.Meta.VARIABLE}}    | where VARIABLE is your custom field created via Smart Form    |
+| \{\{customer.address\}\}          | The customers address \*                                      |
+| \{\{customer.city\}\}             | The customers city \*                                         |
+| \{\{customer.email\}\}            | The customers email \*                                        |
+| \{\{customer.name\}\}             | The customers name \*                                         |
+| \{\{customer.phoneNumber\}\}      | The customers phone number \*                                 |
+| \{\{customer.postalCode\}\}       | The customers postal code \*                                  |
+| \{\{customer.ssn\}\}              | The customers social security number \*                       |
+| \{\{customer.Meta.pdfFileName\}\} | The name of the file to be signed                             |
+| \{\{salesPerson\}\}               | The email of the company user that sent the signature request |
+| \{\{companyName\}\}               | The name of your company                                      |
+| \{\{companySsn\}\}                | The social security number of your company \*                 |
+| \{\{flowName\}\}                  | The name of the flow                                          |
+| \{\{customer.Meta.VARIABLE\}\}    | where VARIABLE is your custom field created via Smart Form    |
 
 - \*if provided by you
