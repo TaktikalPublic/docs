@@ -6,10 +6,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Two `POST` requests are needed to authenticate a user:
-* First call `/auth/start` to start the authentication process
-* Then every two seconds call `/auth/poll` to check whether the user has authenticated
+* First call `/api/auth/start` to start the authentication process
+* Then every two seconds call `/api/auth/poll` to check whether the user has authenticated
 
-The `/auth/start` request returns a json object that needs to be used for the second post request to `/auth/poll`
+The `/api/auth/start` request returns a json object that needs to be used for the second post request to `/api/auth/poll`
 
 ### Example request to authenticate a person
 
@@ -45,9 +45,26 @@ Content-Type: application/json
 }
 ```
 
-The response will include the `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. And `authRequestId` which you will need to send every two seconds to `/auth/poll` until user logs in or request times out (180 seconds).
+## Parameters
 
-The `/auth/poll` request returns a `Customer` object but with different amount of
+- `flowKey` is a key provided by Taktikal. You can also retrieve a list of your flows via a `GET` request here `/api/management/flow`
+- `Ssn` is the Icelandic social security number of the individual you wish to start the authentication process for
+- `PhoneNumber` is the mobile number of the individual you wish to start the authentication process for
+- `AuthenticationContextType` is either `Sim` or `App` which decides the authentication method the individual will use to authenticate
+
+## Response parameters
+
+- `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. 
+- `authRequestId` is a unique key for this login session, you will need to send every two seconds to `/api/auth/poll` (see below) until user logs in or request times out (180 seconds).
+
+
+# Checking if a user has authenticated
+To check if a user has authenticated you need to send a request to `/api/auth/poll` 
+
+## Parameters
+- `authRequestId`: The unique key for this login session that you received in the call to `/api/auth/start`
+- `flowKey`: The same flowkey that was used to call `/api/auth/start`
+- `LookupType`: The `/api/auth/poll` request returns a `Customer` object but with different amount of
 information filled out depending on the `LookupType`. If
 `LookupType.NameAddressFamily` is selected then the extra values returned will
 be returned in `Meta`
@@ -275,7 +292,7 @@ try {
 
 ## Errors
 
-The endpoint `/auth/poll` will return a 403 response if user is not authenticated and we are no longer waiting for him and the body will contain the reason why
+The endpoint `/api/auth/poll` will return a 403 response if user is not authenticated and we are no longer waiting for him and the body will contain the reason why
 
 ## Old method
 
