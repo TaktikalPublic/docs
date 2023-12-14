@@ -26,7 +26,8 @@ below.
 - `EventSignature` is used to validate that Taktikal is the one who sends the
   data. `TimeStamp` and `GUID` hashed with the `webhookSignatureKey` to create a
   `Signature`. If the `Signature` that is calculated is not a match to the value
-  in the event, it was not sent by Taktikal.
+  in the event, it was not sent by Taktikal. For convenience we also supply the 
+  `SignedData` property which has already concatenated TimeStamp and Guid into a single value
 - `EventData` contains all `signee` that signed the document and all their
   personal information provided in this process. The signed document is stored
   as a base64 string in the field `SignedDocument`
@@ -96,6 +97,7 @@ sequenceDiagram
 {
   "Id": "3e9922f5fd7f4a9baa75a3fa90cb9caf",
   "EventData": {
+    "ProcessKey": "sp231f52f87d6f4caaa2e29ecac92d055b",
     "CompanyKey": "fae93sfa4sh4",
     "Signees": [
       {
@@ -139,6 +141,7 @@ sequenceDiagram
     "TimeStamp": 637030223561542290,
     "Guid": "2065b6c0-934f-4d18-81d3-46c29b913311",
     "Signature": "5qN29xaZHKZ65PLMB6ajRgpcxUU9dFRAXhkw36C2d38="
+    "SignedData": "6370302235615422902065b6c0-934f-4d18-81d3-46c29b913311"
   }
 }
 ```
@@ -174,10 +177,12 @@ namespace Webhook
         public long TimeStamp { get; set; }
         public string Guid { get; set; }
         public string Signature { get; set; }
+        public string SignedData { get; set; }
     }
 
     public class SignedDocumentEventData
     {
+        public string ProcessKey { get; set; }
         public List<Signee> Signees { get; set; }
         public string SignedDocument { get; set; }
         public List<AttachmentReference> AttachmentReferences { get; set; }
@@ -252,7 +257,7 @@ namespace Webhook
         {
             var encoding = new UTF8Encoding();
             byte[] keyByte = encoding.GetBytes(yourWebhookSignatureKey);
-            byte[] messageBytes = encoding.GetBytes($"{webhookEvent.EventSignature.TimeStamp}{webhookEvent.EventSignature.Guid}");
+            byte[] messageBytes = encoding.GetBytes(webhookEvent.EventSignature.SignedData);
             using (var hmacsha256 = new HMACSHA256(keyByte))
             {
               byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
@@ -273,6 +278,7 @@ interface IEventSignature {
   TimeStamp: string;
   Guid: string;
   Signature: string;
+  SignedData: string;
 }
 
 const validateSignature = (options: {
@@ -282,10 +288,7 @@ const validateSignature = (options: {
   const { signaturePayload, webhookSignatureKey } = options;
 
   const keyByte = Buffer.from(webhookSignatureKey, "utf8");
-  const messageBytes = Buffer.from(
-    `${signaturePayload.TimeStamp}${signaturePayload.Guid}`,
-    "utf8"
-  );
+  const messageBytes = Buffer.from(signaturePayload.SignedData, "utf8");
 
   const hmacSha256 = crypto.createHmac("sha256", keyByte);
   const hashMessage = hmacSha256.update(messageBytes).digest("base64");
@@ -298,6 +301,7 @@ const validSignature = validateSignature({
     TimeStamp: "638327870864528186",
     Guid: "4071a0c4-e8c9-432c-8031-7d86ca217b12",
     Signature: "NOUtCpHdAyQte6LDcNws4U4qw2vQVhrS4s8YX8=",
+    SignedData: "6383278708645281864071a0c4-e8c9-432c-8031-7d86ca217b12"
   },
   webhookSignatureKey: <TAKTIKAL_WEBHOOK_SIGNATURE_KEY>,
 });
