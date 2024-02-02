@@ -129,10 +129,14 @@ Authorization: Basic MTNhNGU3YjdlNzI0OmFwaS0zZmY0MDkxZDFkOWU0NzQwYmJiMTNkMWI2MmZ
   needed, and displayed in emails. All data in `meta` is also delivered in the
   webhook response.
 - `flattenDocument` Default value is `false`. If set to `true` will attempt to
-  flatten pdf document
+  flatten pdf document.
+
+  If documents include input fields we recommend flattening the document. This
+  prevents the information in the input fields from being changed after signing.
+
 - `reminderRule` Sends reminders, leave empty or null for no reminders. The
   format should be
-  "\{DAYS_AFTER_INITIAL_REMINDER\}:\{DAYS_BETWEEN_RECURRING_REMINDERS\}". e.g. "1:3"
+  `{DAYS_AFTER_INITIAL_REMINDER}:{DAYS_BETWEEN_RECURRING_REMINDERS}`. e.g. "1:3"
   will send one reminder after 1 day and then every three days after that. Valid
   values will be for first reminder to be sent between 0-30 days (0 means no
   reminder) and then send every 0-15 days. 0, again, meaning no reminders. f.e
@@ -172,13 +176,13 @@ Currently we support 7 languages.
 
 | Language  | short code |
 | --------- | ---------- |
-| Icelandic |  `Is`      |
-| English   |  `En`      |
-| Danish    |  `Da`      |
-| Norwegian |  `Nb`      |
-| Swedish   |  `Sv`      |
-| German    |  `De`      |
-| French    |  `Fr`      |
+| Icelandic | `Is`       |
+| English   | `En`       |
+| Danish    | `Da`       |
+| Norwegian | `Nb`       |
+| Swedish   | `Sv`       |
+| German    | `De`       |
+| French    | `Fr`       |
 
 ### Examples code in different languages
 
