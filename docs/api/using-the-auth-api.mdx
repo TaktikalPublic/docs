@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 Two `POST` requests are needed to authenticate a user:
 * First call `/api/auth/start` to start the authentication process
-* Then every two seconds call `/api/auth/poll` to check whether the user has authenticated
+* Then  call `/api/auth/poll` every (`pollingInterval` * seconds) to check whether the user has authenticated
 
 The `/api/auth/start` request returns a json object that needs to be used for the second post request to `/api/auth/poll`
 
@@ -41,7 +41,8 @@ Content-Type: application/json
 ## Response
 {
   "authRequestId": "1-147rag342352345",
-  "verificationCode": "1234"
+  "verificationCode": "1234",
+  "pollingInterval": 3
 }
 ```
 
@@ -55,7 +56,8 @@ Content-Type: application/json
 ## Response parameters
 
 - `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. 
-- `authRequestId` is a unique key for this login session, you will need to send every two seconds to `/api/auth/poll` (see below) until user logs in or request times out (180 seconds).
+- `authRequestId` is a unique key for this login session, you will need to send with every call to `/api/auth/poll` (see below) until user logs in or request times out (180 seconds).
+- `pollingInterval` defines interval between calls to `/api/auth/poll` in seconds. e.g. if set to 4 you cannot call `/api/auth/poll` more than once every 4 seconds.
 
 
 # Checking if a user has authenticated
