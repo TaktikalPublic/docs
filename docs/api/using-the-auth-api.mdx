@@ -55,7 +55,7 @@ Content-Type: application/json
 
 ## Response parameters
 
-- `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. 
+- `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. This is only used when `AuthenticationContextType` is set to `App` for `Sim` it will be empty
 - `authRequestId` is a unique key for this login session, you will need to send with every call to `/api/auth/poll` (see below) until user logs in or request times out (180 seconds).
 - `pollingInterval` defines interval between calls to `/api/auth/poll` in seconds. e.g. if set to 4 you cannot call `/api/auth/poll` more than once every 4 seconds.
 
