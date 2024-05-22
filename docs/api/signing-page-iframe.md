@@ -176,6 +176,10 @@ Language support depends on the specific Signing Page (such as for Smart Forms),
 | Danish | da |
 | Norwegian Bokmål | nb |
 | Swedish | sv |
+| Czech | cs |
+| Spanish | es |
+| Polish | pl |
+| Hungarian | hu |
 
 You can set the language of the Signing Page iframe by adding `lng={country_code}` to the query.
 
