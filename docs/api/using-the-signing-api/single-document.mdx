@@ -172,7 +172,7 @@ settings
 
 #### Signee language
 
-Currently we support 8 languages.
+Currently we support 11 languages.
 
 | Language  | short code |
 | --------- | ---------- |
@@ -185,6 +185,8 @@ Currently we support 8 languages.
 | French    | `Fr`       |
 | Spanish   | `Es`       |
 | Czech     | `Cs`       |
+| Polish    | `Pl`       |
+| Hungarian | `Hu`       |
 
 ### Examples code in different languages
 
@@ -326,31 +328,47 @@ public enum SigneeLanguageType
     /// <summary>
     /// Icelandic
     /// </summary>
-    Is,
+    Is = 10,
     /// <summary>
     /// US English
     /// </summary>
-    En,
+    En = 21,
     /// <summary>
     /// Norwegian Bokmål
     /// </summary>
-    Nb,
+    Nb = 30,
     /// <summary>
     /// Danish
     /// </summary>
-    Dk,
+    Da = 40,
     /// <summary>
     /// German
     /// </summary>
-    De,
+    De = 50,
     /// <summary>
     /// French
     /// </summary>
-    Fr,
+    Fr = 60,
     /// <summary>
     /// Swedish
     /// </summary>
-    Sv
+    Sv = 70,
+    /// <summary>
+    /// Czech
+    /// </summary>
+    Cs = 80,
+    /// <summary>
+    /// Polish
+    /// </summary>
+    Pl = 90,
+    /// <summary>
+    /// Spanish
+    /// </summary>
+    Es = 100,
+    /// <summary>
+    /// Hungarian
+    /// </summary>
+    Hu = 110,
 }
 ```
 
