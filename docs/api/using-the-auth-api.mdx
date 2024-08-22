@@ -23,7 +23,8 @@ Content-Type: application/json
 {
   "PhoneNumber": "1234567",
   "FlowKey": "abc123abc123",
-  "AuthenticationContextType": "Sim"
+  "AuthenticationContextType": "Sim",
+  "IncludeVerificationCode": true
 }
 
 ## Request for authentication via app
@@ -52,10 +53,11 @@ Content-Type: application/json
 - `Ssn` is the Icelandic social security number of the individual you wish to start the authentication process for
 - `PhoneNumber` is the mobile number of the individual you wish to start the authentication process for
 - `AuthenticationContextType` is either `Sim` or `App` which decides the authentication method the individual will use to authenticate
+- `IncludeVerificationCode` (default false) if set to true we will also return a `VerificationCode` for Sim Auth
 
 ## Response parameters
 
-- `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. This is only used when `AuthenticationContextType` is set to `App` for `Sim` it will be empty
+- `verifcationCode` which the user will see in their device and we strongly recommend to display on your end. This will be empty for sim auth unless you set the parameter `IncludeVerificationCode` to `true`
 - `authRequestId` is a unique key for this login session, you will need to send with every call to `/api/auth/poll` (see below) until user logs in or request times out (180 seconds).
 - `pollingInterval` defines interval between calls to `/api/auth/poll` in seconds. e.g. if set to 4 you cannot call `/api/auth/poll` more than once every 4 seconds.
 
