@@ -1,5 +1,5 @@
 ---
-title: 'Include the Signing Page via Iframe'
+title: "Include the Signing Page via Iframe"
 ---
 
 ## Getting Started
@@ -80,10 +80,10 @@ events can be used to know what's happening inside the iframe.
 
 ### Success events
 
-|  Event type          |  Description                                                                                                                             |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-|  `signing_completed` | This event is sent when every document has been signed. The last signed document is sent alongside this event.                           |
-|  `document_signed`   | This event is sent for every signed document, INCLUDING the last document. This event does NOT mean that every document has been signed. |
+|  Event type         |  Description                                                                                                                      |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `signing_completed` | Sent when **EVERY** document has been signed. The last signed document is sent alongside this event.                              |
+| `document_signed`   | Sent when **EACH** document is signed, INCLUDING the last document. This event does NOT mean that every document has been signed. |
 
 In nearly all cases, you will only want to listen to the `signing_completed`
 event. Using `document_signed` is discouraged.
@@ -91,24 +91,25 @@ event. Using `document_signed` is discouraged.
 The payloads for these events look like so:
 
 ```tsx
-interface SigningCompletedEventPayload {
-  type: 'signing_completed';
-  processKey: string;
-  signeeKey: string;
-  signedDocument: SignedDocument;
-}
-
-interface DocumentSignedEventPayload {
-  type: 'document_signed';
-  processKey: string;
-  signeeKey: string;
-  signedDocument: SignedDocument;
-}
-
 interface SignedDocument {
   content: string; // Base64
   digest: string;
   fileName: string;
+}
+
+interface SigningCompletedEventPayload {
+  type: "signing_completed";
+  processKey: string;
+  signeeKey: string;
+  /* 'signedDocument' is only sent for 'Qualified' signature type */
+  signedDocument?: SignedDocument;
+}
+
+interface DocumentSignedEventPayload {
+  type: "document_signed";
+  processKey: string;
+  signeeKey: string;
+  signedDocument: SignedDocument;
 }
 ```
 
@@ -136,57 +137,71 @@ For a sequence of three documents, the events will look like so:
 Under certain conditions the user will not be able to sign the document. When
 this happens an error event will be sent.
 
-|  Event type          |  Description                                                   |
-| -------------------- | -------------------------------------------------------------- |
-|  `already_signed`    | The user has already signed every document.                    |
-|  `process_not_found` | No signing process was found for the keys provided in the URL. |
-|  `error`             | An unknown error occurred when loading the signing page.       |
+|  Event type         |  Description                                                                                                                             |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `already_signed`    | The user has already signed every document.                                                                                              |
+| `process_not_found` | No signing process was found for the keys provided in the URL.                                                                           |
+| `process_expired`   | Process has already expired - In almost all cases this is 30 days after process has been created.                                        |
+| `process_canceled`  | Process has been canceled or recalled by the process owner.                                                                              |
+| `error`             | An unknown error occurred when loading the signing page - in most cases the events above are likely to occur before reaching this state. |
 
 ```tsx
 interface AlreadySignedEventPayload {
-  type: 'already_signed';
+  type: "already_signed";
   processKey: string;
   signeeKey: string;
 }
 
 interface ProcessNotFoundEventPayload {
-  type: 'document_signed';
+  type: "process_not_found";
+  processKey: string;
+  signeeKey: string;
+}
+
+interface ProcessExpiredEventPayload {
+  type: "process_expired";
+  processKey: string;
+  signeeKey: string;
+}
+
+interface ProcessCanceledEventPayload {
+  type: "process_canceled";
   processKey: string;
   signeeKey: string;
 }
 
 interface ErrorEventPayload {
-  type: 'error';
-  processKey: string;
-  signeeKey: string;
+  type: "error";
+  processKey?: string;
+  signeeKey?: string;
 }
 ```
 
-
 ## Language
 
-Language support depends on the specific Signing Page (such as for Smart Forms), but our standard Signing Page supports the following languages:
+Language support depends on the specific Signing Page (such as for Smart Forms),
+but our standard Signing Page supports the following languages:
 
-| Language | Country Code
-|---|---|
-| English | en-us |
-| German | de |
-| French | fr |
-| Icelandic | is |
-| Danish | da |
-| Norwegian Bokmål | nb |
-| Swedish | sv |
-| Czech | cs |
-| Spanish | es |
-| Polish | pl |
-| Hungarian | hu |
+| Language         |  Country Code |
+| ---------------- | ------------- |
+| English          | en-us         |
+| German           | de            |
+| French           | fr            |
+| Icelandic        | is            |
+| Danish           | da            |
+| Norwegian Bokmål | nb            |
+| Swedish          | sv            |
+| Czech            | cs            |
+| Spanish          | es            |
+| Polish           | pl            |
+| Hungarian        | hu            |
 
-You can set the language of the Signing Page iframe by adding `lng={country_code}` to the query.
+You can set the language of the Signing Page iframe by adding
+`lng={country_code}` to the query.
 
 ```
 /s/:processKey/:signeeKey?iframe=true&lng=de
 ```
-
 
 ## FAQ
 
