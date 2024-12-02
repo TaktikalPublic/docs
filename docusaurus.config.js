@@ -2,12 +2,12 @@
 
 module.exports = {
   title: "Taktikal Docs",
-  url: "https://taktikal.gitlab.io",
+  url: "https://taktikalpublic.gitlab.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "favicon.ico",
-  organizationName: "taktikalTeam",
+  organizationName: "taktikalPublic",
   projectName: "docs",
   themeConfig: {
     navbar: {
@@ -46,7 +46,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
-          editUrl: "https://github.com/taktikalTeam/docs/-/edit/master",
+          editUrl: "https://github.com/taktikalPublic/docs/-/edit/master",
         },
         theme: {
           customCss: require.resolve("./src/css/defaults.css"),
