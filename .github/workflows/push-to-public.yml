@@ -1,25 +1,22 @@
 name: Sync to Public Repo
-
 on:
   push:
     branches:
       - master # Trigger on pushes to the main branch
-
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_KEY_DOCS }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-
+      - name: Test SSH Connection
+        run: ssh -T git@github.com
       - name: Push to Public Repo
         run: |
           git remote add public git@github.com:TaktikalPublic/docs.git
