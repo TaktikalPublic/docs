@@ -7,7 +7,7 @@ module.exports = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "favicon.ico",
-  organizationName: "taktikal",
+  organizationName: "taktikalTeam",
   projectName: "docs",
   themeConfig: {
     navbar: {
@@ -46,7 +46,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
-          editUrl: "https://gitlab.com/taktikal/docs/-/edit/master",
+          editUrl: "https://github.com/taktikalTeam/docs/-/edit/master",
         },
         theme: {
           customCss: require.resolve("./src/css/defaults.css"),
