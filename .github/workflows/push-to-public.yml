@@ -22,5 +22,5 @@ jobs:
 
       - name: Push to Public Repo
         run: |
-          git remote add public git@github.com:bjarki@taktikal.is/TaktikalPublic/docs.git
+          git remote add public git@github.com:TaktikalPublic/docs.git
           git push public master --force
